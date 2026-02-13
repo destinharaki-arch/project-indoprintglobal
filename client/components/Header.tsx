@@ -1,12 +1,14 @@
-import { ShoppingCart, Search } from 'lucide-react';
+import { ShoppingCart, Search, User } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
+import { useCart } from '@/context/CartContext';
+import { useUser } from '@/context/UserContext';
 
-interface HeaderProps {
-  cartCount?: number;
-}
+export function Header() {
+  const { getCartCount } = useCart();
+  const { user } = useUser();
+  const cartCount = getCartCount();
 
-export function Header({ cartCount = 0 }: HeaderProps) {
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-border">
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
@@ -38,8 +40,8 @@ export function Header({ cartCount = 0 }: HeaderProps) {
           <button className="p-2 hover:bg-muted rounded-lg transition-colors hidden sm:flex">
             <Search className="w-5 h-5 text-foreground" />
           </button>
-          <Link 
-            to="/cart" 
+          <Link
+            to="/cart"
             className="relative p-2 hover:bg-muted rounded-lg transition-colors flex items-center gap-2"
           >
             <ShoppingCart className="w-5 h-5 text-foreground" />
@@ -49,6 +51,23 @@ export function Header({ cartCount = 0 }: HeaderProps) {
               </span>
             )}
           </Link>
+          {user && (
+            <Link
+              to="/profile"
+              className="p-2 hover:bg-muted rounded-lg transition-colors flex items-center gap-2"
+              title={user.name}
+            >
+              {user.avatar ? (
+                <img
+                  src={user.avatar}
+                  alt={user.name}
+                  className="w-5 h-5 rounded-full object-cover"
+                />
+              ) : (
+                <User className="w-5 h-5 text-foreground" />
+              )}
+            </Link>
+          )}
         </div>
       </div>
     </header>

@@ -2,7 +2,7 @@ import { Header } from '@/components/Header';
 import { ProductCard } from '@/components/ProductCard';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Sparkles } from 'lucide-react';
-import { useState } from 'react';
+import { useCart } from '@/context/CartContext';
 
 const FEATURED_STICKERS = [
   {
@@ -72,29 +72,23 @@ const FEATURED_STICKERS = [
 ];
 
 export default function Index() {
-  const [cartCount, setCartCount] = useState(0);
-  const [wishlist, setWishlist] = useState<Set<string>>(new Set());
+  const { addToCart } = useCart();
 
   const handleAddToCart = (id: string) => {
-    setCartCount(prev => prev + 1);
-    // Toast notification could be added here
-  };
-
-  const handleWishlist = (id: string) => {
-    setWishlist(prev => {
-      const newSet = new Set(prev);
-      if (newSet.has(id)) {
-        newSet.delete(id);
-      } else {
-        newSet.add(id);
-      }
-      return newSet;
-    });
+    const sticker = FEATURED_STICKERS.find(s => s.id === id);
+    if (sticker) {
+      addToCart({
+        id: sticker.id,
+        name: sticker.name,
+        price: sticker.price,
+        image: sticker.image,
+      });
+    }
   };
 
   return (
     <div className="min-h-screen bg-white">
-      <Header cartCount={cartCount} />
+      <Header />
 
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-br from-primary/10 via-background to-secondary/10 pt-20 pb-32">
@@ -168,7 +162,6 @@ export default function Index() {
               key={sticker.id}
               {...sticker}
               onAddToCart={handleAddToCart}
-              onWishlist={handleWishlist}
             />
           ))}
         </div>

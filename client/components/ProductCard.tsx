@@ -1,4 +1,4 @@
-import { Heart, ShoppingCart } from 'lucide-react';
+import { ShoppingCart } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface ProductCardProps {
@@ -10,7 +10,6 @@ interface ProductCardProps {
   rating?: number;
   reviews?: number;
   onAddToCart?: (id: string) => void;
-  onWishlist?: (id: string) => void;
 }
 
 export function ProductCard({
@@ -22,7 +21,6 @@ export function ProductCard({
   rating = 5,
   reviews = 0,
   onAddToCart,
-  onWishlist,
 }: ProductCardProps) {
   return (
     <div className="group bg-card rounded-2xl overflow-hidden border border-border hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
@@ -33,14 +31,6 @@ export function ProductCard({
           alt={name}
           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
         />
-        
-        {/* Wishlist Button */}
-        <button
-          onClick={() => onWishlist?.(id)}
-          className="absolute top-3 right-3 p-2 bg-white/90 backdrop-blur-sm rounded-full hover:bg-accent hover:text-accent-foreground transition-colors"
-        >
-          <Heart className="w-5 h-5" />
-        </button>
 
         {/* Category Badge */}
         {category && (
