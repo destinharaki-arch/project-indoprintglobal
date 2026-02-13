@@ -176,9 +176,9 @@ export default function Index() {
           <p className="text-lg mb-8 opacity-90">
             Get exclusive deals, early access to new collections, and join thousands of sticker enthusiasts
           </p>
-          <button className="bg-white text-primary px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200">
-            Subscribe Now
-          </button>
+          <Link to="/login" className="inline-block bg-white text-primary px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200">
+            Sign Up Now
+          </Link>
         </div>
       </section>
 

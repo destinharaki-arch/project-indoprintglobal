@@ -2,7 +2,6 @@ import { Header } from '@/components/Header';
 import { ProductCard } from '@/components/ProductCard';
 import { useCart } from '@/context/CartContext';
 import { useState } from 'react';
-import { Search, X } from 'lucide-react';
 
 const ALL_STICKERS = [
   {
@@ -103,14 +102,15 @@ const ALL_STICKERS = [
   },
 ];
 
-export default function Shop() {
-  const { addToCart } = useCart();
-  const [searchQuery, setSearchQuery] = useState('');
+const CATEGORIES = Array.from(new Set(ALL_STICKERS.map(s => s.category))).sort();
 
-  const filteredStickers = ALL_STICKERS.filter(sticker =>
-    sticker.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    sticker.category.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+export default function Categories() {
+  const { addToCart } = useCart();
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+
+  const filteredStickers = selectedCategory
+    ? ALL_STICKERS.filter(s => s.category === selectedCategory)
+    : ALL_STICKERS;
 
   const handleAddToCart = (id: string) => {
     const sticker = ALL_STICKERS.find(s => s.id === id);
@@ -129,65 +129,76 @@ export default function Shop() {
       <Header />
 
       <div className="container mx-auto px-4 py-12">
-        {/* Header */}
-        <div className="mb-12">
-          <h1 className="text-4xl font-bold text-foreground mb-4">
-            All Stickers
-          </h1>
-          <p className="text-lg text-muted-foreground mb-8">
-            Browse our complete collection of {ALL_STICKERS.length} unique sticker designs
-          </p>
+        <h1 className="text-4xl font-bold text-foreground mb-12">
+          Browse by Category
+        </h1>
 
-          {/* Search Bar */}
-          <div className="relative">
-            <Search className="absolute left-4 top-3.5 w-5 h-5 text-muted-foreground" />
-            <input
-              type="text"
-              placeholder="Search stickers by name or category..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-12 pr-12 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-white text-foreground placeholder-muted-foreground"
-            />
-            {searchQuery && (
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+          {/* Category Sidebar */}
+          <div className="lg:col-span-1">
+            <div className="sticky top-20 bg-muted/30 rounded-2xl p-6 border border-border">
+              <h2 className="text-lg font-bold text-foreground mb-4">Categories</h2>
+
+              {/* All Categories */}
               <button
-                onClick={() => setSearchQuery('')}
-                className="absolute right-4 top-3.5 text-muted-foreground hover:text-foreground"
+                onClick={() => setSelectedCategory(null)}
+                className={`w-full text-left px-4 py-3 rounded-lg font-medium transition-all mb-2 ${
+                  selectedCategory === null
+                    ? 'bg-primary text-primary-foreground'
+                    : 'text-foreground hover:bg-muted'
+                }`}
               >
-                <X className="w-5 h-5" />
+                All ({ALL_STICKERS.length})
               </button>
+
+              {/* Individual Categories */}
+              <div className="space-y-2">
+                {CATEGORIES.map(category => {
+                  const count = ALL_STICKERS.filter(s => s.category === category).length;
+                  return (
+                    <button
+                      key={category}
+                      onClick={() => setSelectedCategory(category)}
+                      className={`w-full text-left px-4 py-3 rounded-lg font-medium transition-all ${
+                        selectedCategory === category
+                          ? 'bg-primary text-primary-foreground'
+                          : 'text-foreground hover:bg-muted'
+                      }`}
+                    >
+                      {category} ({count})
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+
+          {/* Products Grid */}
+          <div className="lg:col-span-3">
+            {filteredStickers.length === 0 ? (
+              <div className="text-center py-12">
+                <p className="text-muted-foreground text-lg">No stickers found in this category</p>
+              </div>
+            ) : (
+              <>
+                <p className="text-muted-foreground mb-6">
+                  Showing {filteredStickers.length} sticker{filteredStickers.length !== 1 ? 's' : ''}{' '}
+                  {selectedCategory && `in ${selectedCategory}`}
+                </p>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {filteredStickers.map(sticker => (
+                    <ProductCard
+                      key={sticker.id}
+                      {...sticker}
+                      onAddToCart={handleAddToCart}
+                    />
+                  ))}
+                </div>
+              </>
             )}
           </div>
         </div>
-
-        {/* Results Info */}
-        {searchQuery && (
-          <p className="text-muted-foreground mb-6">
-            Found {filteredStickers.length} sticker{filteredStickers.length !== 1 ? 's' : ''} matching "{searchQuery}"
-          </p>
-        )}
-
-        {/* Products Grid */}
-        {filteredStickers.length === 0 ? (
-          <div className="text-center py-12">
-            <p className="text-muted-foreground text-lg mb-4">No stickers found</p>
-            <button
-              onClick={() => setSearchQuery('')}
-              className="text-primary hover:text-primary/80 font-semibold transition-colors"
-            >
-              Clear search
-            </button>
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {filteredStickers.map(sticker => (
-              <ProductCard
-                key={sticker.id}
-                {...sticker}
-                onAddToCart={handleAddToCart}
-              />
-            ))}
-          </div>
-        )}
       </div>
     </div>
   );

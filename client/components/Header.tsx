@@ -27,7 +27,7 @@ export function Header() {
           <Link to="/shop" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
             Shop
           </Link>
-          <Link to="#" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
+          <Link to="/categories" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
             Categories
           </Link>
           <Link to="#" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
@@ -37,9 +37,9 @@ export function Header() {
 
         {/* Right Actions */}
         <div className="flex items-center gap-4">
-          <button className="p-2 hover:bg-muted rounded-lg transition-colors hidden sm:flex">
+          <Link to="/shop" className="p-2 hover:bg-muted rounded-lg transition-colors hidden sm:flex">
             <Search className="w-5 h-5 text-foreground" />
-          </button>
+          </Link>
           <Link
             to="/cart"
             className="relative p-2 hover:bg-muted rounded-lg transition-colors flex items-center gap-2"
@@ -51,7 +51,7 @@ export function Header() {
               </span>
             )}
           </Link>
-          {user && (
+          {user ? (
             <Link
               to="/profile"
               className="p-2 hover:bg-muted rounded-lg transition-colors flex items-center gap-2"
@@ -66,6 +66,13 @@ export function Header() {
               ) : (
                 <User className="w-5 h-5 text-foreground" />
               )}
+            </Link>
+          ) : (
+            <Link
+              to="/login"
+              className="px-4 py-2 bg-primary text-primary-foreground rounded-lg text-sm font-semibold hover:bg-primary/90 transition-colors"
+            >
+              Sign In
             </Link>
           )}
         </div>
