@@ -1,20 +1,24 @@
 import { Header } from '@/components/Header';
 import { useCart } from '@/context/CartContext';
-import { Link } from 'react-router-dom';
-import { Trash2, Plus, Minus, ArrowRight } from 'lucide-react';
+import { useUser } from '@/context/UserContext';
+import { Link, useNavigate } from 'react-router-dom';
+import { Trash2, Plus, Minus, ArrowRight, AlertCircle } from 'lucide-react';
 import { useState } from 'react';
 
 export default function Cart() {
-  const { items, removeFromCart, updateQuantity, getTotalPrice, checkout } = useCart();
-  const [orderPlaced, setOrderPlaced] = useState(false);
+  const navigate = useNavigate();
+  const { user } = useUser();
+  const { items, removeFromCart, updateQuantity, getTotalPrice } = useCart();
 
-  const handleCheckout = () => {
-    checkout();
-    setOrderPlaced(true);
-    setTimeout(() => setOrderPlaced(false), 3000);
+  const handleProceedToCheckout = () => {
+    if (!user) {
+      navigate('/login');
+      return;
+    }
+    navigate('/checkout');
   };
 
-  if (items.length === 0 && !orderPlaced) {
+  if (items.length === 0) {
     return (
       <div className="min-h-screen bg-white">
         <Header />
@@ -42,9 +46,13 @@ export default function Cart() {
     <div className="min-h-screen bg-white">
       <Header />
 
-      {orderPlaced && (
-        <div className="bg-green-50 border-l-4 border-green-500 p-4 m-4">
-          <p className="text-green-700 font-semibold">✓ Order placed successfully! Order ID: {`ORD-${Date.now()}`}</p>
+      {!user && items.length > 0 && (
+        <div className="bg-yellow-50 border-l-4 border-yellow-500 p-4 m-4 flex items-start gap-3">
+          <AlertCircle className="w-5 h-5 text-yellow-600 flex-shrink-0 mt-0.5" />
+          <div>
+            <p className="text-yellow-800 font-semibold">Login Required</p>
+            <p className="text-yellow-700 text-sm">You must be logged in to proceed with checkout. <Link to="/login" className="font-semibold underline">Sign in here</Link></p>
+          </div>
         </div>
       )}
 

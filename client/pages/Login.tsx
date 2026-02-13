@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useUser } from '@/context/UserContext';
-import { Mail, Lock, Eye, EyeOff } from 'lucide-react';
+import { Mail, Lock, Eye, EyeOff, AlertCircle } from 'lucide-react';
 
 export default function Login() {
   const navigate = useNavigate();
-  const { login } = useUser();
+  const { login, getAllUsers } = useUser();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -17,7 +17,7 @@ export default function Login() {
     setError('');
     setIsLoading(true);
 
-    // Simulate login validation
+    // Validation
     if (!email || !password) {
       setError('Please fill in all fields');
       setIsLoading(false);
@@ -36,18 +36,19 @@ export default function Login() {
       return;
     }
 
+    // Check if user exists in database
+    const allUsers = getAllUsers();
+    const existingUser = allUsers.find(u => u.email === email);
+
+    if (!existingUser) {
+      setError('No account found with this email. Please sign up first.');
+      setIsLoading(false);
+      return;
+    }
+
     // Simulate API call
     setTimeout(() => {
-      login({
-        id: 'USER-' + Date.now(),
-        name: email.split('@')[0].charAt(0).toUpperCase() + email.split('@')[0].slice(1),
-        email: email,
-        phone: '+1 (555) 123-4567',
-        address: '123 Main St, San Francisco, CA 94102',
-        joinDate: new Date().toLocaleDateString(),
-        avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=${email}`,
-      });
-
+      login(existingUser);
       setIsLoading(false);
       navigate('/profile');
     }, 1500);
@@ -149,9 +150,12 @@ export default function Login() {
           <div className="text-center">
             <p className="text-sm text-muted-foreground">
               Don't have an account?{' '}
-              <button className="text-primary hover:text-primary/80 font-semibold transition-colors">
+              <Link
+                to="/signup"
+                className="text-primary hover:text-primary/80 font-semibold transition-colors"
+              >
                 Sign up for free
-              </button>
+              </Link>
             </p>
           </div>
         </div>
