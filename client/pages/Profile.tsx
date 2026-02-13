@@ -1,11 +1,12 @@
 import { Header } from '@/components/Header';
 import { useUser } from '@/context/UserContext';
 import { useCart } from '@/context/CartContext';
-import { Mail, Phone, MapPin, Calendar, Package, Edit2 } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Mail, Phone, MapPin, Calendar, Package, Edit2, LogOut, Clock } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function Profile() {
-  const { user } = useUser();
+  const navigate = useNavigate();
+  const { user, logout, loginHistory } = useUser();
   const { orders } = useCart();
 
   if (!user) {
@@ -48,10 +49,25 @@ export default function Profile() {
                 </p>
               </div>
             </div>
-            <button className="flex items-center gap-2 px-6 py-3 border-2 border-primary text-primary rounded-lg hover:bg-primary/5 transition-colors font-semibold">
-              <Edit2 className="w-5 h-5" />
-              Edit Profile
-            </button>
+            <div className="flex gap-3">
+              <Link
+                to="/edit-profile"
+                className="flex items-center gap-2 px-6 py-3 border-2 border-primary text-primary rounded-lg hover:bg-primary/5 transition-colors font-semibold"
+              >
+                <Edit2 className="w-5 h-5" />
+                Edit Profile
+              </Link>
+              <button
+                onClick={() => {
+                  logout();
+                  navigate('/');
+                }}
+                className="flex items-center gap-2 px-6 py-3 border-2 border-destructive text-destructive rounded-lg hover:bg-destructive/5 transition-colors font-semibold"
+              >
+                <LogOut className="w-5 h-5" />
+                Logout
+              </button>
+            </div>
           </div>
 
           {/* Account Information */}
@@ -158,6 +174,58 @@ export default function Profile() {
                     <p className="text-xl font-bold text-primary">
                       ${(order.total * 1.08).toFixed(2)}
                     </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* Login History */}
+        <div className="mt-12 pt-12 border-t border-border">
+          <h2 className="text-3xl font-bold text-foreground mb-8 flex items-center gap-3">
+            <Clock className="w-8 h-8 text-primary" />
+            Login History
+          </h2>
+
+          {loginHistory.length === 0 ? (
+            <div className="text-center py-8 bg-muted/30 rounded-lg border border-border">
+              <p className="text-muted-foreground">No login history yet</p>
+            </div>
+          ) : (
+            <div className="space-y-3 overflow-x-auto">
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+                <div className="text-sm font-semibold text-muted-foreground">Date & Time</div>
+                <div className="text-sm font-semibold text-muted-foreground">Device</div>
+                <div className="text-sm font-semibold text-muted-foreground">IP Info</div>
+                <div className="text-sm font-semibold text-muted-foreground">Status</div>
+              </div>
+              {loginHistory.map((record, index) => (
+                <div
+                  key={index}
+                  className="grid grid-cols-1 md:grid-cols-4 gap-4 p-4 border border-border rounded-lg bg-muted/30 hover:border-primary/30 transition-colors"
+                >
+                  <div>
+                    <p className="text-sm text-muted-foreground">Date</p>
+                    <p className="font-medium text-foreground">
+                      {new Date(record.timestamp).toLocaleDateString()}
+                    </p>
+                    <p className="text-xs text-muted-foreground">
+                      {new Date(record.timestamp).toLocaleTimeString()}
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-sm text-muted-foreground">Device</p>
+                    <p className="font-medium text-foreground text-sm truncate">{record.device}</p>
+                  </div>
+                  <div>
+                    <p className="text-sm text-muted-foreground">IP Info</p>
+                    <p className="font-medium text-foreground text-sm">{record.ipInfo}</p>
+                  </div>
+                  <div>
+                    <span className="inline-block px-3 py-1 bg-green-100 text-green-700 text-xs font-semibold rounded-full">
+                      Success
+                    </span>
                   </div>
                 </div>
               ))}

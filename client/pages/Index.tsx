@@ -203,7 +203,7 @@ export default function Index() {
             <div>
               <h4 className="font-semibold mb-4">Support</h4>
               <ul className="space-y-2 text-sm opacity-75">
-                <li><Link to="#" className="hover:opacity-100 transition">Contact Us</Link></li>
+                <li><Link to="/about" className="hover:opacity-100 transition">About Us</Link></li>
                 <li><Link to="#" className="hover:opacity-100 transition">Shipping Info</Link></li>
                 <li><Link to="#" className="hover:opacity-100 transition">Returns</Link></li>
               </ul>

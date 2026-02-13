@@ -30,7 +30,7 @@ export function Header() {
           <Link to="/categories" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
             Categories
           </Link>
-          <Link to="#" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
+          <Link to="/about" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
             About
           </Link>
         </nav>
