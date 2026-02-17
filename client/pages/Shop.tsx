@@ -132,10 +132,10 @@ export default function Shop() {
         {/* Header */}
         <div className="mb-12">
           <h1 className="text-4xl font-bold text-foreground mb-4">
-            All Stickers
+            Semua Stiker
           </h1>
           <p className="text-lg text-muted-foreground mb-8">
-            Browse our complete collection of {ALL_STICKERS.length} unique sticker designs
+            Jelajahi koleksi lengkap kami dengan {ALL_STICKERS.length} desain stiker unik
           </p>
 
           {/* Search Bar */}
@@ -143,7 +143,7 @@ export default function Shop() {
             <Search className="absolute left-4 top-3.5 w-5 h-5 text-muted-foreground" />
             <input
               type="text"
-              placeholder="Search stickers by name or category..."
+              placeholder="Cari stiker berdasarkan nama atau kategori..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full pl-12 pr-12 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-white text-foreground placeholder-muted-foreground"
@@ -152,6 +152,7 @@ export default function Shop() {
               <button
                 onClick={() => setSearchQuery('')}
                 className="absolute right-4 top-3.5 text-muted-foreground hover:text-foreground"
+                title="Hapus"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -162,19 +163,19 @@ export default function Shop() {
         {/* Results Info */}
         {searchQuery && (
           <p className="text-muted-foreground mb-6">
-            Found {filteredStickers.length} sticker{filteredStickers.length !== 1 ? 's' : ''} matching "{searchQuery}"
+            Ditemukan {filteredStickers.length} stiker yang cocok dengan "{searchQuery}"
           </p>
         )}
 
         {/* Products Grid */}
         {filteredStickers.length === 0 ? (
           <div className="text-center py-12">
-            <p className="text-muted-foreground text-lg mb-4">No stickers found</p>
+            <p className="text-muted-foreground text-lg mb-4">Stiker tidak ditemukan</p>
             <button
               onClick={() => setSearchQuery('')}
               className="text-primary hover:text-primary/80 font-semibold transition-colors"
             >
-              Clear search
+              Hapus pencarian
             </button>
           </div>
         ) : (

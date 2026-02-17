@@ -77,13 +77,13 @@ export default function EditProfile() {
           className="flex items-center gap-2 text-primary hover:text-primary/80 transition-colors mb-8 font-semibold"
         >
           <ArrowLeft className="w-5 h-5" />
-          Back to Profile
+          Kembali ke Profil
         </button>
 
         {/* Page Title */}
         <div className="mb-12">
-          <h1 className="text-4xl font-bold text-foreground mb-2">Edit Profile</h1>
-          <p className="text-muted-foreground">Update your personal information</p>
+          <h1 className="text-4xl font-bold text-foreground mb-2">Edit Profil</h1>
+          <p className="text-muted-foreground">Perbarui informasi pribadi Anda</p>
         </div>
 
         {/* Success Message */}
@@ -104,9 +104,9 @@ export default function EditProfile() {
               />
               <div>
                 <h3 className="text-xl font-bold text-foreground mb-2">{user.name}</h3>
-                <p className="text-muted-foreground mb-4">Member since {user.joinDate}</p>
+                <p className="text-muted-foreground mb-4">Anggota sejak {user.joinDate}</p>
                 <button className="px-4 py-2 border-2 border-primary text-primary rounded-lg hover:bg-primary/5 transition-colors font-semibold text-sm">
-                  Change Avatar
+                  Ubah Avatar
                 </button>
               </div>
             </div>
@@ -119,7 +119,7 @@ export default function EditProfile() {
               <label className="block text-sm font-semibold text-foreground mb-2">
                 <div className="flex items-center gap-2 mb-2">
                   <User className="w-4 h-4 text-primary" />
-                  Full Name
+                  Nama Lengkap
                 </div>
               </label>
               <input
@@ -137,7 +137,7 @@ export default function EditProfile() {
               <label className="block text-sm font-semibold text-foreground mb-2">
                 <div className="flex items-center gap-2 mb-2">
                   <Mail className="w-4 h-4 text-primary" />
-                  Email Address
+                  Alamat Email
                 </div>
               </label>
               <input
@@ -146,7 +146,7 @@ export default function EditProfile() {
                 disabled
                 className="w-full px-4 py-3 border border-border rounded-lg bg-muted text-muted-foreground cursor-not-allowed"
               />
-              <p className="text-xs text-muted-foreground mt-2">Email cannot be changed</p>
+              <p className="text-xs text-muted-foreground mt-2">Email tidak dapat diubah</p>
             </div>
 
             {/* Phone */}
@@ -154,7 +154,7 @@ export default function EditProfile() {
               <label className="block text-sm font-semibold text-foreground mb-2">
                 <div className="flex items-center gap-2 mb-2">
                   <Phone className="w-4 h-4 text-primary" />
-                  Phone Number
+                  Nomor Telepon
                 </div>
               </label>
               <input
@@ -215,12 +215,12 @@ export default function EditProfile() {
                 name="bio"
                 value={formData.bio}
                 onChange={handleChange}
-                placeholder="Tell us about yourself..."
+                placeholder="Ceritakan tentang Anda..."
                 rows={4}
                 className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-white text-foreground resize-none"
               />
               <p className="text-xs text-muted-foreground mt-2">
-                {formData.bio.length}/200 characters
+                {formData.bio.length}/200 karakter
               </p>
             </div>
 
@@ -231,26 +231,26 @@ export default function EditProfile() {
                 disabled={isSaving}
                 className="flex-1 bg-primary text-primary-foreground py-3 rounded-lg font-semibold hover:bg-primary/90 transition-all duration-200 hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {isSaving ? 'Saving Changes...' : 'Save Changes'}
+                {isSaving ? 'Menyimpan Perubahan...' : 'Simpan Perubahan'}
               </button>
               <button
                 type="button"
                 onClick={() => navigate('/profile')}
                 className="flex-1 border-2 border-primary text-primary py-3 rounded-lg font-semibold hover:bg-primary/5 transition-colors"
               >
-                Cancel
+                Batal
               </button>
             </div>
           </form>
 
           {/* Danger Zone */}
           <div className="mt-12 p-6 bg-red-50 border border-red-200 rounded-lg">
-            <h3 className="text-lg font-bold text-red-700 mb-4">Danger Zone</h3>
+            <h3 className="text-lg font-bold text-red-700 mb-4">Zona Berbahaya</h3>
             <button className="px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors font-semibold">
-              Delete Account
+              Hapus Akun
             </button>
             <p className="text-sm text-red-600 mt-2">
-              This action cannot be undone. All your data will be permanently deleted.
+              Tindakan ini tidak dapat dibatalkan. Semua data Anda akan dihapus secara permanen.
             </p>
           </div>
         </div>

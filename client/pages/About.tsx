@@ -11,10 +11,10 @@ export default function About() {
       <section className="bg-gradient-to-br from-primary/10 via-background to-secondary/10 py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl">
-            <h1 className="text-5xl font-bold text-foreground mb-6">About Sticker Shop</h1>
+            <h1 className="text-5xl font-bold text-foreground mb-6">Tentang IndoGlobalPrint</h1>
             <p className="text-xl text-muted-foreground">
-              We're on a mission to bring creativity, self-expression, and joy to sticker lovers everywhere.
-              Founded in 2023, Sticker Shop has become a community platform for artists and enthusiasts.
+              Kami memiliki misi untuk membawa kreativitas, ekspresi diri, dan kegembiraan kepada para pecinta stiker di mana pun.
+              Didirikan pada tahun 2023, IndoGlobalPrint telah menjadi platform komunitas untuk seniman dan penggemar.
             </p>
           </div>
         </div>
@@ -24,21 +24,21 @@ export default function About() {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl">
-            <h2 className="text-4xl font-bold text-foreground mb-8">Our Story</h2>
+            <h2 className="text-4xl font-bold text-foreground mb-8">Cerita Kami</h2>
             <div className="space-y-6 text-lg text-muted-foreground">
               <p>
-                Sticker Shop started as a passion project by a group of artists and designers who wanted to make
-                high-quality stickers accessible to everyone. We noticed that people were looking for unique,
-                creative ways to personalize their belongings - from laptops to water bottles.
+                IndoGlobalPrint dimulai sebagai proyek passion dari sekelompok seniman dan desainer yang ingin membuat
+                stiker berkualitas tinggi dapat diakses oleh semua orang. Kami menyadari bahwa orang mencari cara unik dan
+                kreatif untuk mempersonalisasi barang-barang mereka - dari laptop hingga botol air.
               </p>
               <p>
-                What began as a small collection of handpicked designs has grown into a thriving marketplace with
-                thousands of unique stickers from talented artists around the world. Today, we're proud to serve
-                over 50,000 happy customers who share our passion for self-expression.
+                Apa yang dimulai sebagai koleksi kecil desain pilihan telah berkembang menjadi pasar yang berkembang dengan
+                ribuan stiker unik dari seniman berbakat di seluruh dunia. Saat ini, kami dengan bangga melayani
+                lebih dari 50.000 pelanggan puas yang berbagi passion kami untuk ekspresi diri.
               </p>
               <p>
-                Our commitment to quality, creativity, and customer satisfaction remains at the heart of everything
-                we do. We work directly with artists to ensure fair compensation and support their creative endeavors.
+                Komitmen kami terhadap kualitas, kreativitas, dan kepuasan pelanggan tetap menjadi inti dari semua yang kami lakukan.
+                Kami bekerja langsung dengan seniman untuk memastikan kompensasi yang adil dan mendukung usaha kreatif mereka.
               </p>
             </div>
           </div>
@@ -48,7 +48,7 @@ export default function About() {
       {/* Our Values */}
       <section className="bg-muted/30 py-20">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-foreground mb-12 text-center">Our Values</h2>
+          <h2 className="text-4xl font-bold text-foreground mb-12 text-center">Nilai-Nilai Kami</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Creativity */}
@@ -56,9 +56,9 @@ export default function About() {
               <div className="flex items-center justify-center w-12 h-12 bg-primary/10 rounded-lg mb-4">
                 <Heart className="w-6 h-6 text-primary" />
               </div>
-              <h3 className="text-xl font-bold text-foreground mb-3">Creativity First</h3>
+              <h3 className="text-xl font-bold text-foreground mb-3">Kreativitas Utama</h3>
               <p className="text-muted-foreground">
-                We celebrate artistic expression and support creators from all backgrounds.
+                Kami merayakan ekspresi artistik dan mendukung kreator dari semua latar belakang.
               </p>
             </div>
 
@@ -67,9 +67,9 @@ export default function About() {
               <div className="flex items-center justify-center w-12 h-12 bg-secondary/10 rounded-lg mb-4">
                 <Award className="w-6 h-6 text-secondary" />
               </div>
-              <h3 className="text-xl font-bold text-foreground mb-3">Premium Quality</h3>
+              <h3 className="text-xl font-bold text-foreground mb-3">Kualitas Premium</h3>
               <p className="text-muted-foreground">
-                Every sticker is produced with attention to detail and durability.
+                Setiap stiker diproduksi dengan perhatian terhadap detail dan daya tahan.
               </p>
             </div>
 
@@ -78,9 +78,9 @@ export default function About() {
               <div className="flex items-center justify-center w-12 h-12 bg-primary/10 rounded-lg mb-4">
                 <Users className="w-6 h-6 text-primary" />
               </div>
-              <h3 className="text-xl font-bold text-foreground mb-3">Community</h3>
+              <h3 className="text-xl font-bold text-foreground mb-3">Komunitas</h3>
               <p className="text-muted-foreground">
-                We build a welcoming community where creativity thrives and ideas flourish.
+                Kami membangun komunitas yang ramah di mana kreativitas berkembang dan ide-ide tumbuh subur.
               </p>
             </div>
 
@@ -89,9 +89,9 @@ export default function About() {
               <div className="flex items-center justify-center w-12 h-12 bg-secondary/10 rounded-lg mb-4">
                 <Zap className="w-6 h-6 text-secondary" />
               </div>
-              <h3 className="text-xl font-bold text-foreground mb-3">Innovation</h3>
+              <h3 className="text-xl font-bold text-foreground mb-3">Inovasi</h3>
               <p className="text-muted-foreground">
-                We continuously improve our platform to serve our customers better.
+                Kami terus meningkatkan platform kami untuk melayani pelanggan dengan lebih baik.
               </p>
             </div>
           </div>
@@ -101,23 +101,23 @@ export default function About() {
       {/* Team Section */}
       <section className="py-20">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-foreground mb-12 text-center">Meet Our Team</h2>
+          <h2 className="text-4xl font-bold text-foreground mb-12 text-center">Kenal Tim Kami</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
                 name: 'Sarah Chen',
-                role: 'Founder & CEO',
+                role: 'Pendiri & CEO',
                 image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=sarah',
               },
               {
                 name: 'Marcus Johnson',
-                role: 'Head of Design',
+                role: 'Kepala Desain',
                 image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=marcus',
               },
               {
                 name: 'Elena Rodriguez',
-                role: 'Community Manager',
+                role: 'Manajer Komunitas',
                 image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=elena',
               },
             ].map(member => (
@@ -141,19 +141,19 @@ export default function About() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
             <div>
               <div className="text-5xl font-bold mb-2">50K+</div>
-              <p className="text-lg opacity-90">Happy Customers</p>
+              <p className="text-lg opacity-90">Pelanggan Puas</p>
             </div>
             <div>
               <div className="text-5xl font-bold mb-2">5000+</div>
-              <p className="text-lg opacity-90">Unique Stickers</p>
+              <p className="text-lg opacity-90">Stiker Unik</p>
             </div>
             <div>
               <div className="text-5xl font-bold mb-2">500+</div>
-              <p className="text-lg opacity-90">Artist Partners</p>
+              <p className="text-lg opacity-90">Mitra Seniman</p>
             </div>
             <div>
               <div className="text-5xl font-bold mb-2">1M+</div>
-              <p className="text-lg opacity-90">Orders Shipped</p>
+              <p className="text-lg opacity-90">Pesanan Dikirim</p>
             </div>
           </div>
         </div>
@@ -162,20 +162,20 @@ export default function About() {
       {/* Contact Section */}
       <section className="py-20">
         <div className="container mx-auto px-4 text-center max-w-2xl">
-          <h2 className="text-4xl font-bold text-foreground mb-6">Get In Touch</h2>
+          <h2 className="text-4xl font-bold text-foreground mb-6">Hubungi Kami</h2>
           <p className="text-lg text-muted-foreground mb-8">
-            Have questions? We'd love to hear from you. Reach out to our team anytime.
+            Ada pertanyaan? Kami ingin mendengar dari Anda. Hubungi tim kami kapan saja.
           </p>
 
           <div className="space-y-4">
             <p className="text-foreground">
-              <span className="font-semibold">Email:</span> hello@stickershop.com
+              <span className="font-semibold">Email:</span> hello@indoglobalprint.com
             </p>
             <p className="text-foreground">
-              <span className="font-semibold">Phone:</span> +1 (555) 123-4567
+              <span className="font-semibold">Telepon:</span> +62 (123) 456-7890
             </p>
             <p className="text-foreground">
-              <span className="font-semibold">Address:</span> 123 Creative Ave, San Francisco, CA 94102
+              <span className="font-semibold">Alamat:</span> Jl. Kreatif No. 123, Jakarta, Indonesia 12345
             </p>
           </div>
 
@@ -184,10 +184,10 @@ export default function About() {
               to="/shop"
               className="inline-block bg-primary text-primary-foreground px-8 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors"
             >
-              Start Shopping
+              Mulai Belanja
             </Link>
             <button className="inline-block border-2 border-primary text-primary px-8 py-3 rounded-lg font-semibold hover:bg-primary/5 transition-colors">
-              Contact Us
+              Hubungi Kami
             </button>
           </div>
         </div>
@@ -196,7 +196,7 @@ export default function About() {
       {/* Footer */}
       <footer className="bg-foreground text-background py-12 border-t border-border">
         <div className="container mx-auto px-4 text-center text-sm opacity-75">
-          <p>&copy; 2024 Sticker Shop. All rights reserved. Made with passion for creators.</p>
+          <p>&copy; 2024 IndoGlobalPrint. Semua hak dilindungi. Dibuat dengan passion untuk para kreator.</p>
         </div>
       </footer>
     </div>

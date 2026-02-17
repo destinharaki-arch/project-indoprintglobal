@@ -30,7 +30,7 @@ export default function Checkout() {
       <div className="min-h-screen bg-white">
         <Header />
         <div className="container mx-auto px-4 py-20 text-center">
-          <p className="text-muted-foreground">Please log in to proceed with checkout</p>
+          <p className="text-muted-foreground">Silakan masuk untuk melanjutkan pembayaran</p>
         </div>
       </div>
     );
@@ -41,7 +41,7 @@ export default function Checkout() {
       <div className="min-h-screen bg-white">
         <Header />
         <div className="container mx-auto px-4 py-20 text-center">
-          <p className="text-muted-foreground">Your cart is empty</p>
+          <p className="text-muted-foreground">Keranjang Anda kosong</p>
         </div>
       </div>
     );
@@ -54,11 +54,11 @@ export default function Checkout() {
 
   const validateShippingData = () => {
     if (!shippingData.recipientName || !shippingData.address || !shippingData.city || !shippingData.state || !shippingData.zipCode) {
-      setError('Please fill in all shipping information');
+      setError('Harap isi semua informasi pengiriman');
       return false;
     }
     if (shippingData.zipCode.length < 5) {
-      setError('Please enter a valid zip code');
+      setError('Harap masukkan kode pos yang valid');
       return false;
     }
     return true;
@@ -76,7 +76,7 @@ export default function Checkout() {
 
     // Simulate order processing
     setTimeout(() => {
-      setSuccessMessage('Order placed successfully! ✓');
+      setSuccessMessage('Pesanan ditempatkan dengan sukses! ✓');
       setIsProcessing(false);
 
       // Process checkout after 2 seconds
@@ -97,8 +97,8 @@ export default function Checkout() {
       <Header />
 
       <div className="container mx-auto px-4 py-12">
-        <h1 className="text-4xl font-bold text-foreground mb-2">Checkout</h1>
-        <p className="text-muted-foreground mb-12">Verify your sticker order and shipping address</p>
+        <h1 className="text-4xl font-bold text-foreground mb-2">Pembayaran</h1>
+        <p className="text-muted-foreground mb-12">Verifikasi pesanan stiker dan alamat pengiriman Anda</p>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Left Column - Form */}
@@ -115,7 +115,7 @@ export default function Checkout() {
             <div className="bg-muted/30 rounded-2xl p-6 border border-border">
               <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
                 <Package className="w-6 h-6 text-primary" />
-                Verify Your Stickers
+                Verifikasi Stiker Anda
               </h2>
 
               <div className="space-y-4">
@@ -132,17 +132,17 @@ export default function Checkout() {
                     <div className="flex-1">
                       <h3 className="font-semibold text-foreground">{item.name}</h3>
                       <p className="text-sm text-muted-foreground mt-1">
-                        Quantity: <span className="font-semibold">{item.quantity}</span>
+                        Jumlah: <span className="font-semibold">{item.quantity}</span>
                       </p>
                       <p className="text-sm text-muted-foreground">
-                        Price: <span className="font-semibold">${item.price.toFixed(2)}</span> each
+                        Harga: <span className="font-semibold">${item.price.toFixed(2)}</span> per item
                       </p>
                     </div>
                     <div className="text-right">
                       <p className="text-lg font-bold text-primary">
                         ${(item.price * item.quantity).toFixed(2)}
                       </p>
-                      <p className="text-xs text-muted-foreground mt-2">✓ In Stock</p>
+                      <p className="text-xs text-muted-foreground mt-2">✓ Tersedia</p>
                     </div>
                   </div>
                 ))}
@@ -151,8 +151,8 @@ export default function Checkout() {
               <div className="mt-6 p-4 bg-green-50 border border-green-200 rounded-lg flex items-start gap-3">
                 <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                 <div>
-                  <p className="font-semibold text-green-800">All items verified</p>
-                  <p className="text-sm text-green-700">All stickers are in stock and ready to ship</p>
+                  <p className="font-semibold text-green-800">Semua item terverifikasi</p>
+                  <p className="text-sm text-green-700">Semua stiker tersedia dan siap dikirim</p>
                 </div>
               </div>
             </div>
@@ -162,7 +162,7 @@ export default function Checkout() {
               <div className="bg-muted/30 rounded-2xl p-6 border border-border">
                 <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
                   <MapPin className="w-6 h-6 text-primary" />
-                  Shipping Address
+                  Alamat Pengiriman
                 </h2>
 
                 {/* Error Message */}
@@ -177,14 +177,14 @@ export default function Checkout() {
                   {/* Recipient Name */}
                   <div>
                     <label className="block text-sm font-semibold text-foreground mb-2">
-                      Recipient Name
+                      Nama Penerima
                     </label>
                     <input
                       type="text"
                       name="recipientName"
                       value={shippingData.recipientName}
                       onChange={handleShippingChange}
-                      placeholder="Full name"
+                      placeholder="Nama lengkap"
                       className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-white text-foreground"
                     />
                   </div>
@@ -206,7 +206,7 @@ export default function Checkout() {
                     </div>
                     <div>
                       <label className="block text-sm font-semibold text-foreground mb-2">
-                        Phone
+                        Telepon
                       </label>
                       <input
                         type="tel"
@@ -222,7 +222,7 @@ export default function Checkout() {
                   {/* Street Address */}
                   <div>
                     <label className="block text-sm font-semibold text-foreground mb-2">
-                      Street Address
+                      Alamat Jalan
                     </label>
                     <input
                       type="text"
@@ -238,20 +238,20 @@ export default function Checkout() {
                   <div className="grid grid-cols-2 gap-4">
                     <div>
                       <label className="block text-sm font-semibold text-foreground mb-2">
-                        City
+                        Kota
                       </label>
                       <input
                         type="text"
                         name="city"
                         value={shippingData.city}
                         onChange={handleShippingChange}
-                        placeholder="San Francisco"
+                        placeholder="Jakarta"
                         className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-white text-foreground"
                       />
                     </div>
                     <div>
                       <label className="block text-sm font-semibold text-foreground mb-2">
-                        State/Province
+                        Negara Bagian/Provinsi
                       </label>
                       <input
                         type="text"
@@ -269,7 +269,7 @@ export default function Checkout() {
                   <div className="grid grid-cols-2 gap-4">
                     <div>
                       <label className="block text-sm font-semibold text-foreground mb-2">
-                        Zip Code
+                        Kode Pos
                       </label>
                       <input
                         type="text"
@@ -282,7 +282,7 @@ export default function Checkout() {
                     </div>
                     <div>
                       <label className="block text-sm font-semibold text-foreground mb-2">
-                        Country
+                        Negara
                       </label>
                       <select
                         name="country"
@@ -291,10 +291,10 @@ export default function Checkout() {
                         className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-white text-foreground"
                       >
                         <option>USA</option>
-                        <option>Canada</option>
-                        <option>UK</option>
+                        <option>Kanada</option>
+                        <option>Inggris</option>
                         <option>Australia</option>
-                        <option>Other</option>
+                        <option>Lainnya</option>
                       </select>
                     </div>
                   </div>
@@ -307,7 +307,7 @@ export default function Checkout() {
                 disabled={isProcessing}
                 className="w-full bg-primary text-primary-foreground py-4 rounded-lg font-bold text-lg hover:bg-primary/90 transition-all duration-200 hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {isProcessing ? 'Processing Order...' : 'Confirm & Place Order'}
+                {isProcessing ? 'Memproses Pesanan...' : 'Konfirmasi & Pesan Sekarang'}
               </button>
             </form>
           </div>
@@ -315,7 +315,7 @@ export default function Checkout() {
           {/* Right Column - Order Summary */}
           <div>
             <div className="sticky top-20 bg-muted/30 rounded-2xl p-6 border border-border">
-              <h3 className="text-xl font-bold text-foreground mb-6">Order Summary</h3>
+              <h3 className="text-xl font-bold text-foreground mb-6">Ringkasan Pesanan</h3>
 
               <div className="space-y-4 mb-6">
                 <div className="flex justify-between text-sm">
@@ -323,12 +323,12 @@ export default function Checkout() {
                   <span className="font-semibold text-foreground">${subtotal.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-muted-foreground">Tax (8%)</span>
+                  <span className="text-muted-foreground">Pajak (8%)</span>
                   <span className="font-semibold text-foreground">${tax.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between text-sm border-b border-border pb-4">
-                  <span className="text-muted-foreground">Shipping</span>
-                  <span className="font-semibold text-green-600">FREE</span>
+                  <span className="text-muted-foreground">Pengiriman</span>
+                  <span className="font-semibold text-green-600">GRATIS</span>
                 </div>
               </div>
 
@@ -338,10 +338,10 @@ export default function Checkout() {
               </div>
 
               <div className="space-y-2 text-xs text-muted-foreground">
-                <p>✓ Free shipping on all orders</p>
-                <p>✓ Estimated delivery: 5-7 business days</p>
-                <p>✓ 100% satisfaction guarantee</p>
-                <p>✓ Secure checkout</p>
+                <p>✓ Pengiriman gratis untuk semua pesanan</p>
+                <p>✓ Perkiraan pengiriman: 5-7 hari kerja</p>
+                <p>✓ Jaminan kepuasan 100%</p>
+                <p>✓ Checkout yang aman</p>
               </div>
             </div>
           </div>

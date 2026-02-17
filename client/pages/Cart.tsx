@@ -25,15 +25,15 @@ export default function Cart() {
         <div className="container mx-auto px-4 py-20 text-center">
           <div className="max-w-md mx-auto">
             <div className="text-6xl mb-4">🛒</div>
-            <h1 className="text-4xl font-bold text-foreground mb-4">Your Cart is Empty</h1>
+            <h1 className="text-4xl font-bold text-foreground mb-4">Keranjang Anda Kosong</h1>
             <p className="text-muted-foreground mb-8">
-              Looks like you haven't added any stickers yet. Start shopping to fill your cart!
+              Terlihat Anda belum menambahkan stiker apapun. Mulai belanja untuk mengisi keranjang Anda!
             </p>
             <Link
               to="/shop"
               className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-lg font-semibold hover:bg-primary/90 transition-all duration-200 hover:scale-105 active:scale-95"
             >
-              Continue Shopping
+              Lanjutkan Belanja
               <ArrowRight className="w-5 h-5" />
             </Link>
           </div>
@@ -50,14 +50,14 @@ export default function Cart() {
         <div className="bg-yellow-50 border-l-4 border-yellow-500 p-4 m-4 flex items-start gap-3">
           <AlertCircle className="w-5 h-5 text-yellow-600 flex-shrink-0 mt-0.5" />
           <div>
-            <p className="text-yellow-800 font-semibold">Login Required</p>
-            <p className="text-yellow-700 text-sm">You must be logged in to proceed with checkout. <Link to="/login" className="font-semibold underline">Sign in here</Link></p>
+            <p className="text-yellow-800 font-semibold">Login Diperlukan</p>
+            <p className="text-yellow-700 text-sm">Anda harus masuk untuk melanjutkan checkout. <Link to="/login" className="font-semibold underline">Masuk di sini</Link></p>
           </div>
         </div>
       )}
 
       <div className="container mx-auto px-4 py-12">
-        <h1 className="text-4xl font-bold text-foreground mb-12">Shopping Cart</h1>
+        <h1 className="text-4xl font-bold text-foreground mb-12">Keranjang Belanja</h1>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Cart Items */}
@@ -82,7 +82,7 @@ export default function Cart() {
                     <div>
                       <h3 className="font-semibold text-foreground">{item.name}</h3>
                       <p className="text-sm text-muted-foreground mt-1">
-                        ${item.price.toFixed(2)} each
+                        ${item.price.toFixed(2)} per item
                       </p>
                     </div>
 
@@ -126,23 +126,23 @@ export default function Cart() {
           {/* Order Summary */}
           <div className="lg:col-span-1">
             <div className="sticky top-20 bg-muted/30 rounded-2xl p-6 border border-border">
-              <h2 className="text-xl font-bold text-foreground mb-6">Order Summary</h2>
+              <h2 className="text-xl font-bold text-foreground mb-6">Ringkasan Pesanan</h2>
 
               {/* Items Count */}
               <div className="flex justify-between mb-4 text-sm">
-                <span className="text-muted-foreground">Subtotal ({items.length} items)</span>
+                <span className="text-muted-foreground">Subtotal ({items.length} item)</span>
                 <span className="text-foreground font-semibold">${getTotalPrice().toFixed(2)}</span>
               </div>
 
               {/* Shipping */}
               <div className="flex justify-between mb-4 text-sm border-b border-border pb-4">
-                <span className="text-muted-foreground">Shipping (Free)</span>
+                <span className="text-muted-foreground">Pengiriman (Gratis)</span>
                 <span className="text-foreground font-semibold">$0.00</span>
               </div>
 
               {/* Tax */}
               <div className="flex justify-between mb-6 text-sm">
-                <span className="text-muted-foreground">Tax</span>
+                <span className="text-muted-foreground">Pajak</span>
                 <span className="text-foreground font-semibold">
                   ${(getTotalPrice() * 0.08).toFixed(2)}
                 </span>
@@ -161,7 +161,7 @@ export default function Cart() {
                 onClick={handleProceedToCheckout}
                 className="w-full bg-primary text-primary-foreground py-3 rounded-lg font-semibold hover:bg-primary/90 transition-all duration-200 hover:scale-105 active:scale-95"
               >
-                Proceed to Checkout
+                Lanjut ke Pembayaran
               </button>
 
               {/* Continue Shopping */}
@@ -169,7 +169,7 @@ export default function Cart() {
                 to="/shop"
                 className="block text-center mt-4 text-primary hover:text-primary/80 transition-colors text-sm font-medium"
               >
-                Continue Shopping
+                Lanjutkan Belanja
               </Link>
             </div>
           </div>

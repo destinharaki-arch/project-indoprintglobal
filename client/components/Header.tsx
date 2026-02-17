@@ -22,16 +22,16 @@ export function Header() {
         {/* Navigation Links */}
         <nav className="hidden md:flex items-center gap-8">
           <Link to="/" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
-            Home
+            Beranda
           </Link>
           <Link to="/shop" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
-            Shop
+            Toko
           </Link>
           <Link to="/categories" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
-            Categories
+            Kategori
           </Link>
           <Link to="/about" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
-            About
+            Tentang
           </Link>
         </nav>
 
@@ -72,7 +72,7 @@ export function Header() {
               to="/login"
               className="px-4 py-2 bg-primary text-primary-foreground rounded-lg text-sm font-semibold hover:bg-primary/90 transition-colors"
             >
-              Sign In
+              Masuk
             </Link>
           )}
         </div>

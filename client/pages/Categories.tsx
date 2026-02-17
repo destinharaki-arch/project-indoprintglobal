@@ -130,14 +130,14 @@ export default function Categories() {
 
       <div className="container mx-auto px-4 py-12">
         <h1 className="text-4xl font-bold text-foreground mb-12">
-          Browse by Category
+          Jelajahi berdasarkan Kategori
         </h1>
 
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           {/* Category Sidebar */}
           <div className="lg:col-span-1">
             <div className="sticky top-20 bg-muted/30 rounded-2xl p-6 border border-border">
-              <h2 className="text-lg font-bold text-foreground mb-4">Categories</h2>
+              <h2 className="text-lg font-bold text-foreground mb-4">Kategori</h2>
 
               {/* All Categories */}
               <button
@@ -148,7 +148,7 @@ export default function Categories() {
                     : 'text-foreground hover:bg-muted'
                 }`}
               >
-                All ({ALL_STICKERS.length})
+                Semua ({ALL_STICKERS.length})
               </button>
 
               {/* Individual Categories */}
@@ -177,13 +177,13 @@ export default function Categories() {
           <div className="lg:col-span-3">
             {filteredStickers.length === 0 ? (
               <div className="text-center py-12">
-                <p className="text-muted-foreground text-lg">No stickers found in this category</p>
+                <p className="text-muted-foreground text-lg">Stiker tidak ditemukan dalam kategori ini</p>
               </div>
             ) : (
               <>
                 <p className="text-muted-foreground mb-6">
-                  Showing {filteredStickers.length} sticker{filteredStickers.length !== 1 ? 's' : ''}{' '}
-                  {selectedCategory && `in ${selectedCategory}`}
+                  Menampilkan {filteredStickers.length} stiker{' '}
+                  {selectedCategory && `di ${selectedCategory}`}
                 </p>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

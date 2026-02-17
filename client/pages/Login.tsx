@@ -19,19 +19,19 @@ export default function Login() {
 
     // Validation
     if (!email || !password) {
-      setError('Please fill in all fields');
+      setError('Harap isi semua bidang');
       setIsLoading(false);
       return;
     }
 
     if (!email.includes('@')) {
-      setError('Please enter a valid email');
+      setError('Harap masukkan email yang valid');
       setIsLoading(false);
       return;
     }
 
     if (password.length < 6) {
-      setError('Password must be at least 6 characters');
+      setError('Kata sandi harus minimal 6 karakter');
       setIsLoading(false);
       return;
     }
@@ -41,7 +41,7 @@ export default function Login() {
     const existingUser = allUsers.find(u => u.email === email);
 
     if (!existingUser) {
-      setError('No account found with this email. Please sign up first.');
+      setError('Tidak ada akun dengan email ini. Silakan daftar terlebih dahulu.');
       setIsLoading(false);
       return;
     }
@@ -60,20 +60,20 @@ export default function Login() {
         {/* Logo */}
         <Link to="/" className="flex justify-center mb-8">
           <div className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
-            ✨ Sticker Shop
+            ✨ IndoGlobalPrint
           </div>
         </Link>
 
         {/* Card */}
         <div className="bg-white rounded-2xl shadow-xl p-8 border border-border">
-          <h1 className="text-3xl font-bold text-foreground mb-2">Welcome Back</h1>
-          <p className="text-muted-foreground mb-8">Sign in to your account to continue shopping</p>
+          <h1 className="text-3xl font-bold text-foreground mb-2">Selamat Kembali</h1>
+          <p className="text-muted-foreground mb-8">Masuk ke akun Anda untuk melanjutkan berbelanja</p>
 
           <form onSubmit={handleLogin} className="space-y-6">
             {/* Email Field */}
             <div>
               <label className="block text-sm font-semibold text-foreground mb-2">
-                Email Address
+                Alamat Email
               </label>
               <div className="relative">
                 <Mail className="absolute left-3 top-3.5 w-5 h-5 text-muted-foreground" />
@@ -90,7 +90,7 @@ export default function Login() {
             {/* Password Field */}
             <div>
               <label className="block text-sm font-semibold text-foreground mb-2">
-                Password
+                Kata Sandi
               </label>
               <div className="relative">
                 <Lock className="absolute left-3 top-3.5 w-5 h-5 text-muted-foreground" />
@@ -128,33 +128,33 @@ export default function Login() {
               disabled={isLoading}
               className="w-full bg-primary text-primary-foreground py-3 rounded-lg font-semibold hover:bg-primary/90 transition-all duration-200 hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {isLoading ? 'Signing in...' : 'Sign In'}
+              {isLoading ? 'Sedang masuk...' : 'Masuk'}
             </button>
           </form>
 
           {/* Forgot Password */}
           <div className="mt-6 text-center">
             <button className="text-sm text-primary hover:text-primary/80 transition-colors">
-              Forgot your password?
+              Lupa kata sandi Anda?
             </button>
           </div>
 
           {/* Divider */}
           <div className="my-6 flex items-center gap-4">
             <div className="flex-1 h-px bg-border"></div>
-            <span className="text-sm text-muted-foreground">or</span>
+            <span className="text-sm text-muted-foreground">atau</span>
             <div className="flex-1 h-px bg-border"></div>
           </div>
 
           {/* Sign Up Link */}
           <div className="text-center">
             <p className="text-sm text-muted-foreground">
-              Don't have an account?{' '}
+              Belum memiliki akun?{' '}
               <Link
                 to="/signup"
                 className="text-primary hover:text-primary/80 font-semibold transition-colors"
               >
-                Sign up for free
+                Daftar secara gratis
               </Link>
             </p>
           </div>
@@ -162,12 +162,12 @@ export default function Login() {
 
         {/* Demo Credentials */}
         <div className="mt-6 bg-secondary/10 border border-secondary/20 rounded-lg p-4 text-sm">
-          <p className="text-muted-foreground mb-2">🎯 Demo Credentials:</p>
+          <p className="text-muted-foreground mb-2">🎯 Kredensial Demo:</p>
           <p className="text-foreground font-mono text-xs">
             Email: <span className="text-secondary">demo@example.com</span>
           </p>
           <p className="text-foreground font-mono text-xs">
-            Password: <span className="text-secondary">demo123</span>
+            Kata Sandi: <span className="text-secondary">demo123</span>
           </p>
         </div>
       </div>

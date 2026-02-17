@@ -16,9 +16,9 @@ export default function Profile() {
         <div className="container mx-auto px-4 py-20 text-center">
           <div className="max-w-md mx-auto">
             <div className="text-6xl mb-4">🔒</div>
-            <h1 className="text-4xl font-bold text-foreground mb-4">Please Log In</h1>
+            <h1 className="text-4xl font-bold text-foreground mb-4">Silakan Masuk</h1>
             <p className="text-muted-foreground mb-8">
-              You need to be logged in to view your profile.
+              Anda perlu masuk untuk melihat profil Anda.
             </p>
           </div>
         </div>
@@ -45,7 +45,7 @@ export default function Profile() {
               <div>
                 <h1 className="text-4xl font-bold text-foreground">{user.name}</h1>
                 <p className="text-muted-foreground mt-2">
-                  Member since {user.joinDate}
+                  Anggota sejak {user.joinDate}
                 </p>
               </div>
             </div>
@@ -55,7 +55,7 @@ export default function Profile() {
                 className="flex items-center gap-2 px-6 py-3 border-2 border-primary text-primary rounded-lg hover:bg-primary/5 transition-colors font-semibold"
               >
                 <Edit2 className="w-5 h-5" />
-                Edit Profile
+                Edit Profil
               </Link>
               <button
                 onClick={() => {
@@ -65,7 +65,7 @@ export default function Profile() {
                 className="flex items-center gap-2 px-6 py-3 border-2 border-destructive text-destructive rounded-lg hover:bg-destructive/5 transition-colors font-semibold"
               >
                 <LogOut className="w-5 h-5" />
-                Logout
+                Keluar
               </button>
             </div>
           </div>
@@ -86,7 +86,7 @@ export default function Profile() {
               <div className="flex items-start gap-4 p-4 bg-muted/30 rounded-lg border border-border">
                 <Phone className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
                 <div>
-                  <p className="text-sm text-muted-foreground">Phone</p>
+                  <p className="text-sm text-muted-foreground">Telepon</p>
                   <p className="font-semibold text-foreground">{user.phone}</p>
                 </div>
               </div>
@@ -97,7 +97,7 @@ export default function Profile() {
               <div className="flex items-start gap-4 p-4 bg-muted/30 rounded-lg border border-border md:col-span-2">
                 <MapPin className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
                 <div>
-                  <p className="text-sm text-muted-foreground">Address</p>
+                  <p className="text-sm text-muted-foreground">Alamat</p>
                   <p className="font-semibold text-foreground">{user.address}</p>
                 </div>
               </div>
@@ -109,18 +109,18 @@ export default function Profile() {
         <div>
           <h2 className="text-3xl font-bold text-foreground mb-8 flex items-center gap-3">
             <Package className="w-8 h-8 text-primary" />
-            Order History
+            Riwayat Pesanan
           </h2>
 
           {orders.length === 0 ? (
             <div className="text-center py-12 bg-muted/30 rounded-lg border border-border">
               <Package className="w-12 h-12 text-muted-foreground mx-auto mb-4 opacity-50" />
-              <p className="text-muted-foreground mb-6">No orders yet</p>
+              <p className="text-muted-foreground mb-6">Belum ada pesanan</p>
               <Link
                 to="/shop"
                 className="inline-block bg-primary text-primary-foreground px-6 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors"
               >
-                Start Shopping
+                Mulai Belanja
               </Link>
             </div>
           ) : (
@@ -132,7 +132,7 @@ export default function Profile() {
                 >
                   <div className="flex items-center justify-between mb-4">
                     <div>
-                      <p className="text-sm text-muted-foreground">Order ID</p>
+                      <p className="text-sm text-muted-foreground">ID Pesanan</p>
                       <p className="font-bold text-foreground text-lg">{order.id}</p>
                     </div>
                     <div className="text-right">
@@ -153,7 +153,7 @@ export default function Profile() {
 
                   {/* Order Items */}
                   <div className="mb-4 pb-4 border-t border-border pt-4">
-                    <p className="text-sm text-muted-foreground mb-3">Items ({order.items.length})</p>
+                    <p className="text-sm text-muted-foreground mb-3">Item ({order.items.length})</p>
                     <div className="space-y-2">
                       {order.items.map(item => (
                         <div key={item.id} className="flex justify-between text-sm">
@@ -170,7 +170,7 @@ export default function Profile() {
 
                   {/* Order Total */}
                   <div className="flex items-center justify-between">
-                    <p className="text-lg font-bold text-foreground">Order Total:</p>
+                    <p className="text-lg font-bold text-foreground">Total Pesanan:</p>
                     <p className="text-xl font-bold text-primary">
                       ${(order.total * 1.08).toFixed(2)}
                     </p>
@@ -185,19 +185,19 @@ export default function Profile() {
         <div className="mt-12 pt-12 border-t border-border">
           <h2 className="text-3xl font-bold text-foreground mb-8 flex items-center gap-3">
             <Clock className="w-8 h-8 text-primary" />
-            Login History
+            Riwayat Masuk
           </h2>
 
           {loginHistory.length === 0 ? (
             <div className="text-center py-8 bg-muted/30 rounded-lg border border-border">
-              <p className="text-muted-foreground">No login history yet</p>
+              <p className="text-muted-foreground">Belum ada riwayat masuk</p>
             </div>
           ) : (
             <div className="space-y-3 overflow-x-auto">
               <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
-                <div className="text-sm font-semibold text-muted-foreground">Date & Time</div>
-                <div className="text-sm font-semibold text-muted-foreground">Device</div>
-                <div className="text-sm font-semibold text-muted-foreground">IP Info</div>
+                <div className="text-sm font-semibold text-muted-foreground">Tanggal & Waktu</div>
+                <div className="text-sm font-semibold text-muted-foreground">Perangkat</div>
+                <div className="text-sm font-semibold text-muted-foreground">Info IP</div>
                 <div className="text-sm font-semibold text-muted-foreground">Status</div>
               </div>
               {loginHistory.map((record, index) => (
@@ -206,25 +206,25 @@ export default function Profile() {
                   className="grid grid-cols-1 md:grid-cols-4 gap-4 p-4 border border-border rounded-lg bg-muted/30 hover:border-primary/30 transition-colors"
                 >
                   <div>
-                    <p className="text-sm text-muted-foreground">Date</p>
+                    <p className="text-sm text-muted-foreground">Tanggal</p>
                     <p className="font-medium text-foreground">
-                      {new Date(record.timestamp).toLocaleDateString()}
+                      {new Date(record.timestamp).toLocaleDateString('id-ID')}
                     </p>
                     <p className="text-xs text-muted-foreground">
-                      {new Date(record.timestamp).toLocaleTimeString()}
+                      {new Date(record.timestamp).toLocaleTimeString('id-ID')}
                     </p>
                   </div>
                   <div>
-                    <p className="text-sm text-muted-foreground">Device</p>
+                    <p className="text-sm text-muted-foreground">Perangkat</p>
                     <p className="font-medium text-foreground text-sm truncate">{record.device}</p>
                   </div>
                   <div>
-                    <p className="text-sm text-muted-foreground">IP Info</p>
+                    <p className="text-sm text-muted-foreground">Info IP</p>
                     <p className="font-medium text-foreground text-sm">{record.ipInfo}</p>
                   </div>
                   <div>
                     <span className="inline-block px-3 py-1 bg-green-100 text-green-700 text-xs font-semibold rounded-full">
-                      Success
+                      Berhasil
                     </span>
                   </div>
                 </div>

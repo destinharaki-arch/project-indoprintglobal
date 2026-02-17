@@ -27,19 +27,19 @@ export default function SignUp() {
 
     // Validation
     if (!name || !email || !password || !confirmPassword) {
-      setError('Please fill in all fields');
+      setError('Harap isi semua bidang');
       setIsLoading(false);
       return;
     }
 
     if (name.length < 2) {
-      setError('Name must be at least 2 characters');
+      setError('Nama harus minimal 2 karakter');
       setIsLoading(false);
       return;
     }
 
     if (!validateEmail(email)) {
-      setError('Please enter a valid email address');
+      setError('Harap masukkan alamat email yang valid');
       setIsLoading(false);
       return;
     }
@@ -47,19 +47,19 @@ export default function SignUp() {
     // Check if email already exists
     const allUsers = getAllUsers();
     if (allUsers.some(u => u.email === email)) {
-      setError('This email is already registered. Please log in instead.');
+      setError('Email ini sudah terdaftar. Silakan masuk sebagai gantinya.');
       setIsLoading(false);
       return;
     }
 
     if (password.length < 6) {
-      setError('Password must be at least 6 characters');
+      setError('Kata sandi harus minimal 6 karakter');
       setIsLoading(false);
       return;
     }
 
     if (password !== confirmPassword) {
-      setError('Passwords do not match');
+      setError('Kata sandi tidak cocok');
       setIsLoading(false);
       return;
     }
@@ -90,20 +90,20 @@ export default function SignUp() {
         {/* Logo */}
         <Link to="/" className="flex justify-center mb-8">
           <div className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
-            ✨ Sticker Shop
+            ✨ IndoGlobalPrint
           </div>
         </Link>
 
         {/* Card */}
         <div className="bg-white rounded-2xl shadow-xl p-8 border border-border">
-          <h1 className="text-3xl font-bold text-foreground mb-2">Create Account</h1>
-          <p className="text-muted-foreground mb-8">Join our community of sticker lovers</p>
+          <h1 className="text-3xl font-bold text-foreground mb-2">Buat Akun</h1>
+          <p className="text-muted-foreground mb-8">Bergabunglah dengan komunitas pecinta stiker kami</p>
 
           <form onSubmit={handleSignUp} className="space-y-5">
             {/* Name Field */}
             <div>
               <label className="block text-sm font-semibold text-foreground mb-2">
-                Full Name
+                Nama Lengkap
               </label>
               <div className="relative">
                 <UserIcon className="absolute left-3 top-3.5 w-5 h-5 text-muted-foreground" />
@@ -120,7 +120,7 @@ export default function SignUp() {
             {/* Email Field */}
             <div>
               <label className="block text-sm font-semibold text-foreground mb-2">
-                Email Address
+                Alamat Email
               </label>
               <div className="relative">
                 <Mail className="absolute left-3 top-3.5 w-5 h-5 text-muted-foreground" />
@@ -132,13 +132,13 @@ export default function SignUp() {
                   className="w-full pl-10 pr-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-white text-foreground placeholder-muted-foreground"
                 />
               </div>
-              <p className="text-xs text-muted-foreground mt-1">We'll never share your email</p>
+              <p className="text-xs text-muted-foreground mt-1">Kami tidak akan pernah membagikan email Anda</p>
             </div>
 
             {/* Password Field */}
             <div>
               <label className="block text-sm font-semibold text-foreground mb-2">
-                Password
+                Kata Sandi
               </label>
               <div className="relative">
                 <Lock className="absolute left-3 top-3.5 w-5 h-5 text-muted-foreground" />
@@ -161,13 +161,13 @@ export default function SignUp() {
                   )}
                 </button>
               </div>
-              <p className="text-xs text-muted-foreground mt-1">At least 6 characters</p>
+              <p className="text-xs text-muted-foreground mt-1">Minimal 6 karakter</p>
             </div>
 
             {/* Confirm Password Field */}
             <div>
               <label className="block text-sm font-semibold text-foreground mb-2">
-                Confirm Password
+                Konfirmasi Kata Sandi
               </label>
               <div className="relative">
                 <Lock className="absolute left-3 top-3.5 w-5 h-5 text-muted-foreground" />
@@ -207,9 +207,9 @@ export default function SignUp() {
                 className="mt-1"
               />
               <label htmlFor="terms" className="text-sm text-muted-foreground">
-                I agree to the{' '}
-                <button className="text-primary hover:underline">Terms of Service</button> and{' '}
-                <button className="text-primary hover:underline">Privacy Policy</button>
+                Saya setuju dengan{' '}
+                <button className="text-primary hover:underline">Ketentuan Layanan</button> dan{' '}
+                <button className="text-primary hover:underline">Kebijakan Privasi</button>
               </label>
             </div>
 
@@ -219,23 +219,23 @@ export default function SignUp() {
               disabled={isLoading}
               className="w-full bg-primary text-primary-foreground py-3 rounded-lg font-semibold hover:bg-primary/90 transition-all duration-200 hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed mt-6"
             >
-              {isLoading ? 'Creating Account...' : 'Create Account'}
+              {isLoading ? 'Membuat Akun...' : 'Buat Akun'}
             </button>
           </form>
 
           {/* Divider */}
           <div className="my-6 flex items-center gap-4">
             <div className="flex-1 h-px bg-border"></div>
-            <span className="text-sm text-muted-foreground">or</span>
+            <span className="text-sm text-muted-foreground">atau</span>
             <div className="flex-1 h-px bg-border"></div>
           </div>
 
           {/* Sign In Link */}
           <div className="text-center">
             <p className="text-sm text-muted-foreground">
-              Already have an account?{' '}
+              Sudah memiliki akun?{' '}
               <Link to="/login" className="text-primary hover:text-primary/80 font-semibold transition-colors">
-                Sign in here
+                Masuk di sini
               </Link>
             </p>
           </div>
@@ -244,7 +244,7 @@ export default function SignUp() {
         {/* Social Signup (Future) */}
         <div className="mt-6 bg-primary/5 border border-primary/20 rounded-lg p-4 text-sm">
           <p className="text-muted-foreground text-center">
-            Social login coming soon! Sign up with Google, Facebook, or Apple ID.
+            Login sosial segera hadir! Daftar dengan Google, Facebook, atau Apple ID.
           </p>
         </div>
       </div>
