@@ -61,7 +61,7 @@ export function ProductCard({
         {/* Price and Button */}
         <div className="flex items-center justify-between gap-2">
           <div className="text-lg font-bold text-primary">
-            ${price.toFixed(2)}
+            Rp {(price * 16000).toLocaleString('id-ID')}
           </div>
           <button
             onClick={() => onAddToCart?.(id)}

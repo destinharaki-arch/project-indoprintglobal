@@ -82,7 +82,7 @@ export default function Cart() {
                     <div>
                       <h3 className="font-semibold text-foreground">{item.name}</h3>
                       <p className="text-sm text-muted-foreground mt-1">
-                        ${item.price.toFixed(2)} per item
+                        Rp {(item.price * 16000).toLocaleString('id-ID')} per item
                       </p>
                     </div>
 
@@ -109,7 +109,7 @@ export default function Cart() {
                   {/* Price & Remove */}
                   <div className="flex flex-col items-end justify-between">
                     <p className="font-bold text-lg text-primary">
-                      ${(item.price * item.quantity).toFixed(2)}
+                      Rp {((item.price * item.quantity) * 16000).toLocaleString('id-ID')}
                     </p>
                     <button
                       onClick={() => removeFromCart(item.id)}
@@ -131,20 +131,20 @@ export default function Cart() {
               {/* Items Count */}
               <div className="flex justify-between mb-4 text-sm">
                 <span className="text-muted-foreground">Subtotal ({items.length} item)</span>
-                <span className="text-foreground font-semibold">${getTotalPrice().toFixed(2)}</span>
+                <span className="text-foreground font-semibold">Rp {(getTotalPrice() * 16000).toLocaleString('id-ID')}</span>
               </div>
 
               {/* Shipping */}
               <div className="flex justify-between mb-4 text-sm border-b border-border pb-4">
                 <span className="text-muted-foreground">Pengiriman (Gratis)</span>
-                <span className="text-foreground font-semibold">$0.00</span>
+                <span className="text-foreground font-semibold">Gratis</span>
               </div>
 
               {/* Tax */}
               <div className="flex justify-between mb-6 text-sm">
                 <span className="text-muted-foreground">Pajak</span>
                 <span className="text-foreground font-semibold">
-                  ${(getTotalPrice() * 0.08).toFixed(2)}
+                  Rp {((getTotalPrice() * 0.08) * 16000).toLocaleString('id-ID')}
                 </span>
               </div>
 
@@ -152,7 +152,7 @@ export default function Cart() {
               <div className="flex justify-between mb-6 p-4 bg-primary/10 rounded-lg border border-primary/20">
                 <span className="font-bold text-foreground">Total</span>
                 <span className="font-bold text-lg text-primary">
-                  ${(getTotalPrice() * 1.08).toFixed(2)}
+                  Rp {((getTotalPrice() * 1.08) * 16000).toLocaleString('id-ID')}
                 </span>
               </div>
 

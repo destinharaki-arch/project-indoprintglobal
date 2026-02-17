@@ -135,12 +135,12 @@ export default function Checkout() {
                         Jumlah: <span className="font-semibold">{item.quantity}</span>
                       </p>
                       <p className="text-sm text-muted-foreground">
-                        Harga: <span className="font-semibold">${item.price.toFixed(2)}</span> per item
+                        Harga: <span className="font-semibold">Rp {(item.price * 16000).toLocaleString('id-ID')}</span> per item
                       </p>
                     </div>
                     <div className="text-right">
                       <p className="text-lg font-bold text-primary">
-                        ${(item.price * item.quantity).toFixed(2)}
+                        Rp {((item.price * item.quantity) * 16000).toLocaleString('id-ID')}
                       </p>
                       <p className="text-xs text-muted-foreground mt-2">✓ Tersedia</p>
                     </div>
@@ -320,11 +320,11 @@ export default function Checkout() {
               <div className="space-y-4 mb-6">
                 <div className="flex justify-between text-sm">
                   <span className="text-muted-foreground">Subtotal</span>
-                  <span className="font-semibold text-foreground">${subtotal.toFixed(2)}</span>
+                  <span className="font-semibold text-foreground">Rp {(subtotal * 16000).toLocaleString('id-ID')}</span>
                 </div>
                 <div className="flex justify-between text-sm">
                   <span className="text-muted-foreground">Pajak (8%)</span>
-                  <span className="font-semibold text-foreground">${tax.toFixed(2)}</span>
+                  <span className="font-semibold text-foreground">Rp {(tax * 16000).toLocaleString('id-ID')}</span>
                 </div>
                 <div className="flex justify-between text-sm border-b border-border pb-4">
                   <span className="text-muted-foreground">Pengiriman</span>
@@ -334,7 +334,7 @@ export default function Checkout() {
 
               <div className="flex justify-between p-4 bg-primary/10 rounded-lg border border-primary/20 mb-6">
                 <span className="font-bold text-foreground">Total</span>
-                <span className="text-2xl font-bold text-primary">${total.toFixed(2)}</span>
+                <span className="text-2xl font-bold text-primary">Rp {(total * 16000).toLocaleString('id-ID')}</span>
               </div>
 
               <div className="space-y-2 text-xs text-muted-foreground">
