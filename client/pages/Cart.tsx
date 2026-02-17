@@ -158,7 +158,7 @@ export default function Cart() {
 
               {/* Checkout Button */}
               <button
-                onClick={handleCheckout}
+                onClick={handleProceedToCheckout}
                 className="w-full bg-primary text-primary-foreground py-3 rounded-lg font-semibold hover:bg-primary/90 transition-all duration-200 hover:scale-105 active:scale-95"
               >
                 Proceed to Checkout
