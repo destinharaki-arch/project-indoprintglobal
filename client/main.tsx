@@ -14,6 +14,7 @@ import Login from "./pages/Login";
 import Categories from "./pages/Categories";
 import About from "./pages/About";
 import EditProfile from "./pages/EditProfile";
+import CustomDesign from "./pages/CustomDesign";
 import NotFound from "./pages/NotFound";
 import { CartProvider } from "./context/CartContext";
 import { UserProvider } from "./context/UserContext";
@@ -37,6 +38,7 @@ createRoot(document.getElementById("root")!).render(
               <Route path="/login" element={<Login />} />
               <Route path="/categories" element={<Categories />} />
               <Route path="/about" element={<About />} />
+              <Route path="/custom-design" element={<CustomDesign />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>

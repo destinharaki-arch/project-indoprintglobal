@@ -30,6 +30,9 @@ export function Header() {
           <Link to="/categories" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
             Kategori
           </Link>
+          <Link to="/custom-design" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
+            Desain Kustom
+          </Link>
           <Link to="/about" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
             Tentang
           </Link>
