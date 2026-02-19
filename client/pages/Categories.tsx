@@ -2,6 +2,9 @@ import { Header } from '@/components/Header';
 import { ProductCard } from '@/components/ProductCard';
 import { useCart } from '@/context/CartContext';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useUser } from '@/context/UserContext';
+import { useToast } from '@/components/ui/use-toast';
 
 const ALL_STICKERS = [
   {
@@ -106,6 +109,9 @@ const CATEGORIES = Array.from(new Set(ALL_STICKERS.map(s => s.category))).sort()
 
 export default function Categories() {
   const { addToCart } = useCart();
+  const { isLoggedIn } = useUser();
+  const navigate = useNavigate();
+  const { toast } = useToast();
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
   const filteredStickers = selectedCategory
@@ -113,6 +119,16 @@ export default function Categories() {
     : ALL_STICKERS;
 
   const handleAddToCart = (id: string) => {
+    if (!isLoggedIn) {
+      toast({
+        title: 'Silakan Login',
+        description: 'Anda harus masuk untuk menambahkan item ke keranjang.',
+        variant: 'destructive',
+      });
+      navigate('/login');
+      return;
+    }
+
     const sticker = ALL_STICKERS.find(s => s.id === id);
     if (sticker) {
       addToCart({
@@ -120,6 +136,10 @@ export default function Categories() {
         name: sticker.name,
         price: sticker.price,
         image: sticker.image,
+      });
+      toast({
+        title: 'Ditambahkan ke Keranjang',
+        description: `${sticker.name} telah ditambahkan ke keranjang Anda.`,
       });
     }
   };

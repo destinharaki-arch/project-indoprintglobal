@@ -3,6 +3,9 @@ import { ProductCard } from '@/components/ProductCard';
 import { useCart } from '@/context/CartContext';
 import { useState } from 'react';
 import { Search, X } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { useUser } from '@/context/UserContext';
+import { useToast } from '@/components/ui/use-toast';
 
 const ALL_STICKERS = [
   {
@@ -105,6 +108,9 @@ const ALL_STICKERS = [
 
 export default function Shop() {
   const { addToCart } = useCart();
+  const { isLoggedIn } = useUser();
+  const navigate = useNavigate();
+  const { toast } = useToast();
   const [searchQuery, setSearchQuery] = useState('');
 
   const filteredStickers = ALL_STICKERS.filter(sticker =>
@@ -113,6 +119,16 @@ export default function Shop() {
   );
 
   const handleAddToCart = (id: string) => {
+    if (!isLoggedIn) {
+      toast({
+        title: 'Silakan Login',
+        description: 'Anda harus masuk untuk menambahkan item ke keranjang.',
+        variant: 'destructive',
+      });
+      navigate('/login');
+      return;
+    }
+
     const sticker = ALL_STICKERS.find(s => s.id === id);
     if (sticker) {
       addToCart({
@@ -120,6 +136,10 @@ export default function Shop() {
         name: sticker.name,
         price: sticker.price,
         image: sticker.image,
+      });
+      toast({
+        title: 'Ditambahkan ke Keranjang',
+        description: `${sticker.name} telah ditambahkan ke keranjang Anda.`,
       });
     }
   };

@@ -1,8 +1,10 @@
 import { Header } from '@/components/Header';
 import { ProductCard } from '@/components/ProductCard';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { useCart } from '@/context/CartContext';
+import { useUser } from '@/context/UserContext';
+import { useToast } from '@/components/ui/use-toast';
 
 const FEATURED_STICKERS = [
   {
@@ -73,8 +75,21 @@ const FEATURED_STICKERS = [
 
 export default function Index() {
   const { addToCart } = useCart();
+  const { isLoggedIn } = useUser();
+  const navigate = useNavigate();
+  const { toast } = useToast();
 
   const handleAddToCart = (id: string) => {
+    if (!isLoggedIn) {
+      toast({
+        title: 'Silakan Login',
+        description: 'Anda harus masuk untuk menambahkan item ke keranjang.',
+        variant: 'destructive',
+      });
+      navigate('/login');
+      return;
+    }
+
     const sticker = FEATURED_STICKERS.find(s => s.id === id);
     if (sticker) {
       addToCart({
@@ -82,6 +97,10 @@ export default function Index() {
         name: sticker.name,
         price: sticker.price,
         image: sticker.image,
+      });
+      toast({
+        title: 'Ditambahkan ke Keranjang',
+        description: `${sticker.name} telah ditambahkan ke keranjang Anda.`,
       });
     }
   };
