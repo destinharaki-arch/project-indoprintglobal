@@ -88,7 +88,7 @@ export default function Checkout() {
       // Process checkout after 2 seconds
       setTimeout(() => {
         checkout();
-        navigate('/profile');
+        navigate('/orders');
       }, 2000);
     }, 1500);
   };
