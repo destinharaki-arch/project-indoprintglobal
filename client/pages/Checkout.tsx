@@ -3,7 +3,7 @@ import { useCart } from '@/context/CartContext';
 import { useUser } from '@/context/UserContext';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import { MapPin, Package, Check, AlertCircle } from 'lucide-react';
+import { MapPin, Package, Check, AlertCircle, CreditCard, Truck } from 'lucide-react';
 
 export default function Checkout() {
   const navigate = useNavigate();
@@ -12,6 +12,7 @@ export default function Checkout() {
   const [isProcessing, setIsProcessing] = useState(false);
   const [error, setError] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
+  const [paymentMethod, setPaymentMethod] = useState<'bank' | 'cod'>('bank');
 
   // Shipping form state
   const [shippingData, setShippingData] = useState({
@@ -61,6 +62,10 @@ export default function Checkout() {
       setError('Harap masukkan kode pos yang valid');
       return false;
     }
+    if (!paymentMethod) {
+      setError('Harap pilih metode pembayaran');
+      return false;
+    }
     return true;
   };
 
@@ -76,7 +81,8 @@ export default function Checkout() {
 
     // Simulate order processing
     setTimeout(() => {
-      setSuccessMessage('Pesanan ditempatkan dengan sukses! ✓');
+      const methodText = paymentMethod === 'bank' ? 'Transfer Bank' : 'Bayar di Tempat (COD)';
+      setSuccessMessage(`Pesanan ditempatkan dengan sukses! ✓ Metode: ${methodText}`);
       setIsProcessing(false);
 
       // Process checkout after 2 seconds
@@ -90,7 +96,8 @@ export default function Checkout() {
   const subtotal = getTotalPrice();
   const tax = subtotal * 0.08;
   const shippingCost = 0;
-  const total = subtotal + tax + shippingCost;
+  const codFee = paymentMethod === 'cod' ? 10000 / 16000 : 0; // 10000 IDR converted to USD
+  const total = subtotal + tax + shippingCost + codFee;
 
   return (
     <div className="min-h-screen bg-white">
@@ -301,6 +308,142 @@ export default function Checkout() {
                 </div>
               </div>
 
+              {/* Payment Method */}
+              <div className="bg-muted/30 rounded-2xl p-6 border border-border">
+                <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
+                  <CreditCard className="w-6 h-6 text-primary" />
+                  Metode Pembayaran
+                </h2>
+
+                <div className="space-y-4 mb-8">
+                  {/* Bank Transfer Option */}
+                  <div
+                    onClick={() => setPaymentMethod('bank')}
+                    className={`p-4 rounded-lg border-2 cursor-pointer transition-all ${
+                      paymentMethod === 'bank'
+                        ? 'border-primary bg-primary/5'
+                        : 'border-border bg-white hover:border-primary/30'
+                    }`}
+                  >
+                    <div className="flex items-start gap-3">
+                      <input
+                        type="radio"
+                        name="payment"
+                        value="bank"
+                        checked={paymentMethod === 'bank'}
+                        onChange={() => setPaymentMethod('bank')}
+                        className="w-5 h-5 mt-1 cursor-pointer accent-primary"
+                      />
+                      <div className="flex-1">
+                        <label className="block font-semibold text-foreground cursor-pointer">
+                          Transfer Bank
+                        </label>
+                        <p className="text-sm text-muted-foreground mt-1">
+                          Transfer langsung ke rekening bank kami dengan biaya admin minimal
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Cash on Delivery Option */}
+                  <div
+                    onClick={() => setPaymentMethod('cod')}
+                    className={`p-4 rounded-lg border-2 cursor-pointer transition-all ${
+                      paymentMethod === 'cod'
+                        ? 'border-primary bg-primary/5'
+                        : 'border-border bg-white hover:border-primary/30'
+                    }`}
+                  >
+                    <div className="flex items-start gap-3">
+                      <input
+                        type="radio"
+                        name="payment"
+                        value="cod"
+                        checked={paymentMethod === 'cod'}
+                        onChange={() => setPaymentMethod('cod')}
+                        className="w-5 h-5 mt-1 cursor-pointer accent-primary"
+                      />
+                      <div className="flex-1">
+                        <label className="block font-semibold text-foreground cursor-pointer">
+                          Bayar di Tempat (COD)
+                        </label>
+                        <p className="text-sm text-muted-foreground mt-1">
+                          Bayar kepada kurir saat paket tiba di alamat Anda
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Bank Transfer Details */}
+                {paymentMethod === 'bank' && (
+                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
+                    <h3 className="font-semibold text-blue-900 mb-4 flex items-center gap-2">
+                      <CreditCard className="w-4 h-4" />
+                      Detail Transfer Bank
+                    </h3>
+                    <div className="space-y-3 text-sm">
+                      <div className="flex justify-between items-start bg-white p-3 rounded border border-blue-100">
+                        <span className="text-blue-800 font-semibold">Bank:</span>
+                        <span className="text-foreground font-bold">Bank Central Asia (BCA)</span>
+                      </div>
+                      <div className="flex justify-between items-start bg-white p-3 rounded border border-blue-100">
+                        <span className="text-blue-800 font-semibold">Nomor Rekening:</span>
+                        <span className="text-foreground font-mono font-bold">1234567890</span>
+                      </div>
+                      <div className="flex justify-between items-start bg-white p-3 rounded border border-blue-100">
+                        <span className="text-blue-800 font-semibold">Atas Nama:</span>
+                        <span className="text-foreground font-bold">PT IndoGlobalPrint</span>
+                      </div>
+                      <div className="flex justify-between items-start bg-white p-3 rounded border border-blue-100">
+                        <span className="text-blue-800 font-semibold">Nominal:</span>
+                        <span className="text-foreground font-bold">Rp {(getTotalPrice() * 16000).toLocaleString('id-ID')}</span>
+                      </div>
+                    </div>
+                    <div className="mt-4 p-3 bg-blue-100 rounded text-sm text-blue-900">
+                      <p className="font-semibold mb-1">⚠️ Penting:</p>
+                      <ul className="list-disc list-inside space-y-1">
+                        <li>Pastikan nominal transfer sesuai agar pesanan terverifikasi otomatis</li>
+                        <li>Konfirmasi pembayaran akan dikirim via email dalam 2 jam</li>
+                        <li>Jika ada kendala, hubungi customer service kami</li>
+                      </ul>
+                    </div>
+                  </div>
+                )}
+
+                {/* Cash on Delivery Details */}
+                {paymentMethod === 'cod' && (
+                  <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-6">
+                    <h3 className="font-semibold text-green-900 mb-4 flex items-center gap-2">
+                      <Truck className="w-4 h-4" />
+                      Informasi Bayar di Tempat (COD)
+                    </h3>
+                    <div className="space-y-3 text-sm text-green-900">
+                      <div className="bg-white p-3 rounded border border-green-100">
+                        <p className="font-semibold mb-2">Cara Pembayaran:</p>
+                        <p>Anda bisa membayar langsung kepada kurir dengan uang tunai atau menggunakan e-wallet (GCash, PayMaya) saat paket diterima.</p>
+                      </div>
+                      <div className="bg-white p-3 rounded border border-green-100">
+                        <p className="font-semibold mb-2">Estimasi Biaya Tambahan:</p>
+                        <p>Ada biaya COD sebesar Rp 10.000 yang akan ditambahkan ke total pembayaran Anda.</p>
+                      </div>
+                      <div className="bg-white p-3 rounded border border-green-100">
+                        <p className="font-semibold mb-2">Estimasi Pengiriman:</p>
+                        <p>5-7 hari kerja dari tanggal pemesanan</p>
+                      </div>
+                    </div>
+                    <div className="mt-4 p-3 bg-green-100 rounded text-sm text-green-900">
+                      <p className="font-semibold">✓ Keuntungan COD:</p>
+                      <ul className="list-disc list-inside space-y-1 mt-2">
+                        <li>Bayar setelah paket tiba dengan aman</li>
+                        <li>Tidak perlu transfer bank terlebih dahulu</li>
+                        <li>Bisa langsung inspeksi produk sebelum bayar</li>
+                      </ul>
+                    </div>
+                  </div>
+                )}
+              </div>
+
               {/* Confirm Button */}
               <button
                 type="submit"
@@ -326,9 +469,21 @@ export default function Checkout() {
                   <span className="text-muted-foreground">Pajak (8%)</span>
                   <span className="font-semibold text-foreground">Rp {(tax * 16000).toLocaleString('id-ID')}</span>
                 </div>
-                <div className="flex justify-between text-sm border-b border-border pb-4">
+                <div className="flex justify-between text-sm">
                   <span className="text-muted-foreground">Pengiriman</span>
                   <span className="font-semibold text-green-600">GRATIS</span>
+                </div>
+                {paymentMethod === 'cod' && (
+                  <div className="flex justify-between text-sm border-t border-border pt-4">
+                    <span className="text-muted-foreground">Biaya COD</span>
+                    <span className="font-semibold text-orange-600">Rp 10.000</span>
+                  </div>
+                )}
+                <div className={`flex justify-between text-sm ${paymentMethod === 'cod' ? '' : 'border-b border-border pb-4'} ${paymentMethod === 'cod' ? 'border-t border-border pt-4' : ''}`}>
+                  <span className="text-muted-foreground">Metode Pembayaran</span>
+                  <span className="font-semibold text-foreground">
+                    {paymentMethod === 'bank' ? 'Transfer Bank' : 'COD'}
+                  </span>
                 </div>
               </div>
 
