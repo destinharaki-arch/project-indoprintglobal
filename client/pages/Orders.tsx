@@ -207,9 +207,9 @@ export default function Orders() {
                     </span>
                   </div>
                   <div className="flex justify-between items-center mb-3">
-                    <span className="text-muted-foreground">Pajak (8%)</span>
+                    <span className="text-muted-foreground">Pajak (3%)</span>
                     <span className="font-semibold text-foreground">
-                      Rp {(order.total * 0.08 * 16000).toLocaleString('id-ID')}
+                      Rp {(order.total * 0.03 * 16000).toLocaleString('id-ID')}
                     </span>
                   </div>
                   <div className="flex justify-between items-center mb-4 pb-4 border-b border-border">
@@ -219,7 +219,7 @@ export default function Orders() {
                   <div className="flex justify-between items-center">
                     <span className="font-bold text-foreground">Total Pesanan</span>
                     <span className="text-2xl font-bold text-primary">
-                      Rp {((order.total * 1.08) * 16000).toLocaleString('id-ID')}
+                      Rp {((order.total * 1.03) * 16000).toLocaleString('id-ID')}
                     </span>
                   </div>
                 </div>

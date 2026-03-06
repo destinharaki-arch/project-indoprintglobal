@@ -142,9 +142,9 @@ export default function Cart() {
 
               {/* Tax */}
               <div className="flex justify-between mb-6 text-sm">
-                <span className="text-muted-foreground">Pajak</span>
+                <span className="text-muted-foreground">Pajak (3%)</span>
                 <span className="text-foreground font-semibold">
-                  Rp {((getTotalPrice() * 0.08) * 16000).toLocaleString('id-ID')}
+                  Rp {((getTotalPrice() * 0.03) * 16000).toLocaleString('id-ID')}
                 </span>
               </div>
 
@@ -152,7 +152,7 @@ export default function Cart() {
               <div className="flex justify-between mb-6 p-4 bg-primary/10 rounded-lg border border-primary/20">
                 <span className="font-bold text-foreground">Total</span>
                 <span className="font-bold text-lg text-primary">
-                  Rp {((getTotalPrice() * 1.08) * 16000).toLocaleString('id-ID')}
+                  Rp {((getTotalPrice() * 1.03) * 16000).toLocaleString('id-ID')}
                 </span>
               </div>
 

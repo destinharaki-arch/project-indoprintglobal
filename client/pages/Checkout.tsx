@@ -94,7 +94,7 @@ export default function Checkout() {
   };
 
   const subtotal = getTotalPrice();
-  const tax = subtotal * 0.08;
+  const tax = subtotal * 0.03;
   const shippingCost = 0;
   const codFee = paymentMethod === 'cod' ? 10000 / 16000 : 0; // 10000 IDR converted to USD
   const total = subtotal + tax + shippingCost + codFee;
@@ -466,7 +466,7 @@ export default function Checkout() {
                   <span className="font-semibold text-foreground">Rp {(subtotal * 16000).toLocaleString('id-ID')}</span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-muted-foreground">Pajak (8%)</span>
+                  <span className="text-muted-foreground">Pajak (3%)</span>
                   <span className="font-semibold text-foreground">Rp {(tax * 16000).toLocaleString('id-ID')}</span>
                 </div>
                 <div className="flex justify-between text-sm">
