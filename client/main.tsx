@@ -13,6 +13,7 @@ import Checkout from "./pages/Checkout";
 import Orders from "./pages/Orders";
 import Profile from "./pages/Profile";
 import Login from "./pages/Login";
+import SignUp from "./pages/SignUp";
 import Categories from "./pages/Categories";
 import About from "./pages/About";
 import EditProfile from "./pages/EditProfile";
@@ -40,6 +41,7 @@ createRoot(document.getElementById("root")!).render(
               <Route path="/profile" element={<Profile />} />
               <Route path="/edit-profile" element={<EditProfile />} />
               <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<SignUp />} />
               <Route path="/categories" element={<Categories />} />
               <Route path="/about" element={<About />} />
               <Route path="/custom-design" element={<CustomDesign />} />
