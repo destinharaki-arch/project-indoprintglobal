@@ -15,6 +15,10 @@ const ALL_STICKERS = [
     category: 'Space',
     image: 'https://images.unsplash.com/photo-1578926078328-123c71e45b92?w=400&h=400&fit=crop',
     reviews: 128,
+    size: '5-10 cm',
+    shape: 'Lingkaran & Bintang',
+    material: 'Vinil Glossy',
+    usage: 'Laptop, Tablet, Dekorasi Dinding',
   },
   {
     id: '2',
@@ -23,6 +27,10 @@ const ALL_STICKERS = [
     category: 'Aesthetic',
     image: 'https://images.unsplash.com/photo-1516169a1ce13e4d0d8ba5a7c0f3bcc4?w=400&h=400&fit=crop',
     reviews: 95,
+    size: '4-8 cm',
+    shape: 'Persegi & Oval',
+    material: 'Vinil Matte',
+    usage: 'Botol Minum, Notebook, Laptop',
   },
   {
     id: '3',
@@ -31,6 +39,10 @@ const ALL_STICKERS = [
     category: 'Gaming',
     image: 'https://images.unsplash.com/photo-1538481143235-a15c99a8ebb1?w=400&h=400&fit=crop',
     reviews: 156,
+    size: '6-12 cm',
+    shape: 'Persegi Panjang & Kotak',
+    material: 'Vinil Glossy Waterproof',
+    usage: 'Gaming Console, Laptop, Kendaraan',
   },
   {
     id: '4',
@@ -39,6 +51,10 @@ const ALL_STICKERS = [
     category: 'Nature',
     image: 'https://images.unsplash.com/photo-1518532500516-37786d3f2c91?w=400&h=400&fit=crop',
     reviews: 82,
+    size: '5-10 cm',
+    shape: 'Organik & Daun',
+    material: 'Vinil Eco-Friendly',
+    usage: 'Tumbler, Laptop, Outdoor Gear',
   },
   {
     id: '5',
@@ -47,6 +63,10 @@ const ALL_STICKERS = [
     category: 'Fun',
     image: 'https://images.unsplash.com/photo-1516919592328-3bda9b4f16f1?w=400&h=400&fit=crop',
     reviews: 203,
+    size: '4-10 cm',
+    shape: 'Bulat & Bentuk Custom',
+    material: 'Vinil Glossy',
+    usage: 'Helm, Skateboard, Laptop, Tas',
   },
   {
     id: '6',
@@ -55,6 +75,10 @@ const ALL_STICKERS = [
     category: 'Futuristic',
     image: 'https://images.unsplash.com/photo-1551431009-381d36ac3a99?w=400&h=400&fit=crop',
     reviews: 174,
+    size: '7-15 cm',
+    shape: 'Geometric & Futuristik',
+    material: 'Vinil Holographic',
+    usage: 'Gaming Setup, Laptop, Dekorasi Ruangan',
   },
   {
     id: '7',
@@ -63,6 +87,10 @@ const ALL_STICKERS = [
     category: 'Cute',
     image: 'https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=400&h=400&fit=crop',
     reviews: 142,
+    size: '3-8 cm',
+    shape: 'Bulat & Hati',
+    material: 'Vinil Matte',
+    usage: 'Laptop, Notebook, Smartphone Case',
   },
   {
     id: '8',
@@ -71,6 +99,10 @@ const ALL_STICKERS = [
     category: 'Art',
     image: 'https://images.unsplash.com/photo-1515378519653-1700523bb21b?w=400&h=400&fit=crop',
     reviews: 67,
+    size: '5-12 cm',
+    shape: 'Geometrik & Abstrak',
+    material: 'Vinil Matte Waterproof',
+    usage: 'Laptop, Wall Art, Furniture',
   },
   {
     id: '9',
@@ -79,6 +111,10 @@ const ALL_STICKERS = [
     category: 'Anime',
     image: 'https://images.unsplash.com/photo-1578926078328-123c71e45b92?w=400&h=400&fit=crop',
     reviews: 189,
+    size: '6-12 cm',
+    shape: 'Oval & Persegi',
+    material: 'Vinil Glossy',
+    usage: 'Laptop, Notebook, Merchandise Display',
   },
   {
     id: '10',
@@ -87,6 +123,10 @@ const ALL_STICKERS = [
     category: 'Vintage',
     image: 'https://images.unsplash.com/photo-1516169a1ce13e4d0d8ba5a7c0f3bcc4?w=400&h=400&fit=crop',
     reviews: 76,
+    size: '4-10 cm',
+    shape: 'Persegi & Oval Klasik',
+    material: 'Vinil Matte',
+    usage: 'Vintage Collection, Scrapbook, Dekorasi',
   },
   {
     id: '11',
@@ -95,6 +135,10 @@ const ALL_STICKERS = [
     category: 'Music',
     image: 'https://images.unsplash.com/photo-1538481143235-a15c99a8ebb1?w=400&h=400&fit=crop',
     reviews: 143,
+    size: '5-12 cm',
+    shape: 'Bulat & Catatan Musik',
+    material: 'Vinil Glossy',
+    usage: 'Gitar, Laptop, Music Studio Decor',
   },
   {
     id: '12',
@@ -103,6 +147,10 @@ const ALL_STICKERS = [
     category: 'Sports',
     image: 'https://images.unsplash.com/photo-1518532500516-37786d3f2c91?w=400&h=400&fit=crop',
     reviews: 94,
+    size: '6-10 cm',
+    shape: 'Bulat & Dinamis',
+    material: 'Vinil Waterproof',
+    usage: 'Helm, Jersey, Peralatan Olahraga, Laptop',
   },
 ];
 
@@ -203,7 +251,16 @@ export default function Shop() {
             {filteredStickers.map(sticker => (
               <ProductCard
                 key={sticker.id}
-                {...sticker}
+                id={sticker.id}
+                name={sticker.name}
+                price={sticker.price}
+                image={sticker.image}
+                category={sticker.category}
+                reviews={sticker.reviews}
+                size={sticker.size}
+                shape={sticker.shape}
+                material={sticker.material}
+                usage={sticker.usage}
                 onAddToCart={handleAddToCart}
               />
             ))}
