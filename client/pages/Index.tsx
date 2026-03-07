@@ -10,8 +10,8 @@ const FEATURED_STICKERS = [
   {
     id: '19',
     name: 'Band Music Sticker Pack 1',
-    price: 6.99,
-    category: 'Brand',
+    price: 1.25,
+    category: 'Stiker',
     image: 'https://cdn.builder.io/api/v1/image/assets%2F9c50b3bcefd1446d9de9ea9a61046f45%2F04b47a6243b34c738b3dc2c7ff88c596?format=webp&width=800&height=1200',
     reviews: 134,
     size: '3-15 cm',
@@ -22,8 +22,8 @@ const FEATURED_STICKERS = [
   {
     id: '22',
     name: 'Retro Aesthetic Tee',
-    price: 14.99,
-    category: 'Apparel',
+    price: 5.63,
+    category: 'T-Shirt',
     image: 'https://cdn.builder.io/api/v1/image/assets%2F9c50b3bcefd1446d9de9ea9a61046f45%2F21f8eb63700c48f18dd789586e363604?format=webp&width=800&height=1200',
     reviews: 98,
     size: 'XS - XXL',
@@ -34,8 +34,8 @@ const FEATURED_STICKERS = [
   {
     id: '25',
     name: 'Statue of Liberty Graphic Tee',
-    price: 13.99,
-    category: 'Apparel',
+    price: 5.00,
+    category: 'T-Shirt',
     image: 'https://cdn.builder.io/api/v1/image/assets%2F9c50b3bcefd1446d9de9ea9a61046f45%2F8745f6a9c95e4748a3551354005bbbad?format=webp&width=800&height=1200',
     reviews: 156,
     size: 'XS - XXL',
@@ -46,8 +46,8 @@ const FEATURED_STICKERS = [
   {
     id: '23',
     name: 'Nature & Adventure Tee',
-    price: 13.99,
-    category: 'Apparel',
+    price: 4.38,
+    category: 'T-Shirt',
     image: 'https://cdn.builder.io/api/v1/image/assets%2F9c50b3bcefd1446d9de9ea9a61046f45%2Fbb61ddac41b544de9d8a0687d18cb113?format=webp&width=800&height=1200',
     reviews: 87,
     size: 'XS - XXL',
