@@ -44,16 +44,16 @@ const FEATURED_STICKERS = [
     usage: 'Casual Wear, Beach Theme, Positive Message',
   },
   {
-    id: '30',
-    name: 'Kingdom Botanical Tee',
-    price: 6.56,
+    id: '34',
+    name: 'Saint City Tee',
+    price: 4.69,
     category: 'T-Shirt',
-    image: 'https://cdn.builder.io/api/v1/image/assets%2F9c50b3bcefd1446d9de9ea9a61046f45%2F7cda3d754bcb46ddbe67e8ac4433a7e9?format=webp&width=800&height=1200',
-    reviews: 99,
+    image: 'https://cdn.builder.io/api/v1/image/assets%2F9c50b3bcefd1446d9de9ea9a61046f45%2F964545a1b5d34628b7e95645c51cb3da?format=webp&width=800&height=1200',
+    reviews: 98,
     size: 'XS - XXL',
     shape: 'Crew Neck',
-    material: 'Cotton Vintage',
-    usage: 'Casual Wear, Christian Apparel, Spiritual Design',
+    material: 'Cotton 100%',
+    usage: 'Casual Wear, Urban Style, Statement Shirt',
   },
 ];
 
