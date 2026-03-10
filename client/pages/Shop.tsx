@@ -328,37 +328,6 @@ export default function Shop() {
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
       <Header />
 
-      {/* Featured Banner */}
-      <section className="relative h-96 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-0 left-0 w-96 h-96 bg-primary/30 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 right-0 w-96 h-96 bg-secondary/30 rounded-full blur-3xl"></div>
-        </div>
-
-        <div className="relative h-full flex items-center">
-          <div className="container mx-auto px-4 flex items-center justify-between">
-            <div className="max-w-xl">
-              <p className="text-primary text-sm font-semibold mb-2">— Koleksi Terbaru</p>
-              <h2 className="text-5xl font-bold text-white mb-4 leading-tight">
-                Jelajahi Koleksi Eksklusif Kami
-              </h2>
-              <p className="text-slate-300 text-lg mb-6">
-                Temukan stiker dan apparel berkualitas tinggi dengan desain unik yang mencerminkan gaya Anda
-              </p>
-              <button className="bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-lg font-semibold transition-all hover:scale-105 active:scale-95">
-                Mulai Belanja
-              </button>
-            </div>
-
-            <div className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 w-96 h-96">
-              <div className="relative w-full h-full">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full blur-2xl"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Main Content */}
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
