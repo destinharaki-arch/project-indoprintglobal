@@ -4,6 +4,7 @@ import { useUser } from '@/context/UserContext';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { MapPin, Package, Check, AlertCircle, CreditCard, Truck } from 'lucide-react';
+import { saveUser, saveShippingAddress, createOrder, processPayment } from '@/services/checkoutService';
 
 export default function Checkout() {
   const navigate = useNavigate();
@@ -79,18 +80,77 @@ export default function Checkout() {
 
     setIsProcessing(true);
 
-    // Simulate order processing
-    setTimeout(() => {
+    try {
+      // 1. Save or update user
+      const userResult = await saveUser({
+        id: user?.id,
+        name: shippingData.recipientName,
+        email: shippingData.email,
+        phone: shippingData.phone,
+        address: shippingData.address,
+      });
+
+      const userId = userResult.id;
+
+      // 2. Save shipping address
+      const addressResult = await saveShippingAddress({
+        userId,
+        recipientName: shippingData.recipientName,
+        email: shippingData.email,
+        phone: shippingData.phone,
+        streetAddress: shippingData.address,
+        city: shippingData.city,
+        state: shippingData.state,
+        postalCode: shippingData.zipCode,
+        country: shippingData.country,
+        isDefault: true,
+      });
+
+      const shippingAddressId = addressResult.id;
+
+      // 3. Create order
+      const orderResult = await createOrder({
+        userId,
+        shippingAddressId,
+        paymentMethodType: paymentMethod === 'bank' ? 'bank_transfer' : 'cod',
+        items: items.map(item => ({
+          id: item.id,
+          name: item.name,
+          quantity: item.quantity,
+          price: item.price,
+        })),
+        subtotal: getTotalPrice(),
+        taxAmount: getTotalPrice() * 0.03,
+        taxPercentage: 3,
+        shippingCost: 0,
+        additionalFees: paymentMethod === 'cod' ? 10000 / 16000 : 0,
+        totalAmount: total,
+      });
+
+      const orderId = orderResult.id;
+
+      // 4. Process payment
+      await processPayment({
+        orderId,
+        amount: total,
+        status: 'completed',
+      });
+
+      // Show success message
       const methodText = paymentMethod === 'bank' ? 'Transfer Bank' : 'Bayar di Tempat (COD)';
-      setSuccessMessage(`Pesanan ditempatkan dengan sukses! ✓ Metode: ${methodText}`);
+      setSuccessMessage(`Pesanan ditempatkan dengan sukses! ✓ Order: ${orderResult.orderNumber} | Metode: ${methodText}`);
       setIsProcessing(false);
 
       // Process checkout after 2 seconds
       setTimeout(() => {
         checkout();
         navigate('/orders');
-      }, 2000);
-    }, 1500);
+      }, 3000);
+    } catch (err) {
+      const errorMessage = err instanceof Error ? err.message : 'Terjadi kesalahan saat memproses pesanan';
+      setError(errorMessage);
+      setIsProcessing(false);
+    }
   };
 
   const subtotal = getTotalPrice();
