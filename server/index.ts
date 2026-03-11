@@ -2,14 +2,10 @@ import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import { handleDemo } from "./routes/demo.js";
-import checkoutRoutes from "./routes/checkout.js";
-import { initializeDatabase } from "./db.js";
+import checkoutRoutes from "./routes/checkout-simple.js";
 
 export async function createServer() {
   const app = express();
-
-  // Initialize database
-  await initializeDatabase();
 
   // Middleware
   app.use(cors());

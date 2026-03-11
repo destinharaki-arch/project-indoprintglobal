@@ -66,12 +66,24 @@ export async function saveUser(user: User): Promise<{ id: string; message: strin
       body: JSON.stringify(user),
     });
 
+    const contentType = response.headers.get('content-type');
+    const text = await response.text();
+
     if (!response.ok) {
-      const error = await response.json();
-      throw new Error(error.error || 'Failed to save user');
+      console.error('API Error Response:', { status: response.status, text, contentType });
+      throw new Error(`API Error ${response.status}: Failed to save user`);
     }
 
-    return await response.json();
+    if (!text) {
+      throw new Error('Empty response from server');
+    }
+
+    try {
+      return JSON.parse(text);
+    } catch (parseError) {
+      console.error('JSON Parse Error:', { text, contentType });
+      throw new Error('Invalid JSON response from server');
+    }
   } catch (error) {
     console.error('Error saving user:', error);
     throw error;
@@ -89,12 +101,23 @@ export async function saveShippingAddress(address: ShippingAddress): Promise<{ i
       body: JSON.stringify(address),
     });
 
+    const text = await response.text();
+
     if (!response.ok) {
-      const error = await response.json();
-      throw new Error(error.error || 'Failed to save shipping address');
+      console.error('API Error Response:', { status: response.status, text });
+      throw new Error(`API Error ${response.status}: Failed to save shipping address`);
     }
 
-    return await response.json();
+    if (!text) {
+      throw new Error('Empty response from server');
+    }
+
+    try {
+      return JSON.parse(text);
+    } catch (parseError) {
+      console.error('JSON Parse Error:', text);
+      throw new Error('Invalid JSON response from server');
+    }
   } catch (error) {
     console.error('Error saving shipping address:', error);
     throw error;

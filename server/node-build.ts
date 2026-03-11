@@ -27,7 +27,7 @@ async function start() {
     console.log(`🚀 Fusion Starter server running on port ${port}`);
     console.log(`📱 Frontend: http://localhost:${port}`);
     console.log(`🔧 API: http://localhost:${port}/api`);
-    console.log(`💾 Database initialized: SQLite at data/checkout.db`);
+    console.log(`💾 Checkout data stored in: data/orders.json`);
   });
 
   // Graceful shutdown
