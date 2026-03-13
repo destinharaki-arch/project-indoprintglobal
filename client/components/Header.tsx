@@ -14,8 +14,13 @@ export function Header() {
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
-          <div className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
-            ✨ IndoGlobalPrint
+          <img
+            src="https://cdn.builder.io/api/v1/image/assets%2F9c50b3bcefd1446d9de9ea9a61046f45%2Fc99ee96232a84df9a39eb98db8905fdc?format=webp&width=800&height=1200"
+            alt="IndoGlobalPrint Logo"
+            className="h-10 w-auto object-contain"
+          />
+          <div className="text-xl font-bold text-foreground">
+            IndoGlobalPrint
           </div>
         </Link>
 

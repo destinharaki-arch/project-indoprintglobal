@@ -190,7 +190,14 @@ export default function Index() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
             <div>
-              <h3 className="font-bold text-lg mb-4">✨ IndoGlobalPrint</h3>
+              <div className="flex items-center gap-2 mb-4">
+                <img
+                  src="https://cdn.builder.io/api/v1/image/assets%2F9c50b3bcefd1446d9de9ea9a61046f45%2Fc99ee96232a84df9a39eb98db8905fdc?format=webp&width=800&height=1200"
+                  alt="IndoGlobalPrint Logo"
+                  className="h-8 w-auto object-contain"
+                />
+                <h3 className="font-bold text-lg">IndoGlobalPrint</h3>
+              </div>
               <p className="text-sm opacity-75">
                 Tujuan utama Anda untuk stiker berkualitas tinggi dan unik dari seniman di seluruh dunia.
               </p>
