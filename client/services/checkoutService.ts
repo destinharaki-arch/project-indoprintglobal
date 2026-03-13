@@ -58,6 +58,7 @@ interface PaymentData {
 // Save or update user
 export async function saveUser(user: User): Promise<{ id: string; message: string }> {
   try {
+    console.log('Calling API:', `${API_BASE}/user`, 'with data:', user);
     const response = await fetch(`${API_BASE}/user`, {
       method: 'POST',
       headers: {
@@ -69,9 +70,12 @@ export async function saveUser(user: User): Promise<{ id: string; message: strin
     const contentType = response.headers.get('content-type');
     const text = await response.text();
 
+    console.log('API Response:', { status: response.status, contentType, text: text.substring(0, 500) });
+
     if (!response.ok) {
-      console.error('API Error Response:', { status: response.status, text, contentType });
-      throw new Error(`API Error ${response.status}: Failed to save user`);
+      const error = { status: response.status, text, contentType };
+      console.error('API Error Response:', error);
+      throw new Error(`API Error ${response.status}: ${text || 'Failed to save user'}`);
     }
 
     if (!text) {
@@ -82,10 +86,10 @@ export async function saveUser(user: User): Promise<{ id: string; message: strin
       return JSON.parse(text);
     } catch (parseError) {
       console.error('JSON Parse Error:', { text, contentType });
-      throw new Error('Invalid JSON response from server');
+      throw new Error(`Invalid JSON response from server: ${text}`);
     }
   } catch (error) {
-    console.error('Error saving user:', error);
+    console.error('Error saving user:', error instanceof Error ? error.message : String(error));
     throw error;
   }
 }
