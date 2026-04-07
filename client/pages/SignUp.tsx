@@ -249,7 +249,7 @@ export default function SignUp() {
         {/* Social Signup (Future) */}
         <div className="mt-6 bg-primary/5 border border-primary/20 rounded-lg p-4 text-sm">
           <p className="text-muted-foreground text-center">
-            Login sosial segera hadir! Daftar dengan Google, Facebook, atau Apple ID.
+            Login sosial segera hadir! Daftar dengan Google, Facebook, atau Bind.
           </p>
         </div>
       </div>
