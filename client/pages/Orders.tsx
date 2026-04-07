@@ -247,7 +247,7 @@ export default function Orders() {
                 </div>
                 <div className="bg-white p-4 rounded-lg">
                   <p className="font-semibold text-foreground mb-2">Jam Operasional</p>
-                  <p className="text-blue-700">Senin - Jumat (09:00 - 18:00)</p>
+                  <p className="text-blue-700">Senin - Jumat (10:00 - 18:00)</p>
                 </div>
               </div>
             </div>
