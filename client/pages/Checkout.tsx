@@ -27,6 +27,12 @@ export default function Checkout() {
     country: 'Indonesia',
   });
 
+  // Bank transfer form state
+  const [bankData, setBankData] = useState({
+    accountNumber: '',
+    accountHolder: '',
+  });
+
   if (!user) {
     return (
       <div className="min-h-screen bg-white">
@@ -54,6 +60,11 @@ export default function Checkout() {
     setShippingData(prev => ({ ...prev, [name]: value }));
   };
 
+  const handleBankDataChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setBankData(prev => ({ ...prev, [name]: value }));
+  };
+
   const validateShippingData = () => {
     if (!shippingData.recipientName || !shippingData.address || !shippingData.city || !shippingData.state || !shippingData.zipCode) {
       setError('Harap isi semua informasi pengiriman');
@@ -66,6 +77,16 @@ export default function Checkout() {
     if (!paymentMethod) {
       setError('Harap pilih metode pembayaran');
       return false;
+    }
+    if (paymentMethod === 'bank') {
+      if (!bankData.accountNumber || !bankData.accountHolder) {
+        setError('Harap isi nomor rekening dan nama pemilik rekening');
+        return false;
+      }
+      if (bankData.accountNumber.length < 10) {
+        setError('Nomor rekening minimal 10 digit');
+        return false;
+      }
     }
     return true;
   };
@@ -125,7 +146,12 @@ export default function Checkout() {
         shippingCost: 0,
         additionalFees: paymentMethod === 'cod' ? 10000 / 16000 : 0,
         totalAmount: total,
-      });
+        // Add bank transfer details if applicable
+        ...(paymentMethod === 'bank' && {
+          bankAccountNumber: bankData.accountNumber,
+          bankAccountHolder: bankData.accountHolder,
+        }),
+      } as any);
 
       const orderId = orderResult.id;
 
@@ -433,29 +459,67 @@ export default function Checkout() {
 
                 {/* Bank Transfer Details */}
                 {paymentMethod === 'bank' && (
-                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
-                    <h3 className="font-semibold text-blue-900 mb-4 flex items-center gap-2">
+                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
+                    <h3 className="font-semibold text-blue-900 mb-6 flex items-center gap-2">
                       <CreditCard className="w-4 h-4" />
                       Detail Transfer Bank
                     </h3>
-                    <div className="space-y-3 text-sm">
-                      <div className="flex justify-between items-start bg-white p-3 rounded border border-blue-100">
-                        <span className="text-blue-800 font-semibold">Bank:</span>
-                        <span className="text-foreground font-bold">Bank Central Asia (BCA)</span>
-                      </div>
-                      <div className="flex justify-between items-start bg-white p-3 rounded border border-blue-100">
-                        <span className="text-blue-800 font-semibold">Nomor Rekening:</span>
-                        <span className="text-foreground font-mono font-bold">1234567890</span>
-                      </div>
-                      <div className="flex justify-between items-start bg-white p-3 rounded border border-blue-100">
-                        <span className="text-blue-800 font-semibold">Atas Nama:</span>
-                        <span className="text-foreground font-bold">PT IndoGlobalPrint</span>
-                      </div>
-                      <div className="flex justify-between items-start bg-white p-3 rounded border border-blue-100">
-                        <span className="text-blue-800 font-semibold">Nominal:</span>
-                        <span className="text-foreground font-bold">Rp {(getTotalPrice() * 16000).toLocaleString('id-ID')}</span>
+
+                    {/* Account Number Input */}
+                    <div className="mb-4">
+                      <label className="block text-sm font-semibold text-blue-900 mb-2">
+                        Nomor Rekening Anda
+                      </label>
+                      <input
+                        type="text"
+                        name="accountNumber"
+                        value={bankData.accountNumber}
+                        onChange={handleBankDataChange}
+                        placeholder="Contoh: 1234567890"
+                        className="w-full px-4 py-3 border border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white text-foreground"
+                      />
+                      <p className="text-xs text-blue-700 mt-1">Masukkan nomor rekening tempat Anda akan mentransfer dana untuk pembayaran</p>
+                    </div>
+
+                    {/* Account Holder Input */}
+                    <div className="mb-4">
+                      <label className="block text-sm font-semibold text-blue-900 mb-2">
+                        Nama Pemilik Rekening
+                      </label>
+                      <input
+                        type="text"
+                        name="accountHolder"
+                        value={bankData.accountHolder}
+                        onChange={handleBankDataChange}
+                        placeholder="Contoh: John Doe"
+                        className="w-full px-4 py-3 border border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white text-foreground"
+                      />
+                      <p className="text-xs text-blue-700 mt-1">Masukkan nama pemilik rekening untuk konfirmasi pembayaran</p>
+                    </div>
+
+                    {/* Our Bank Details */}
+                    <div className="bg-white rounded-lg p-4 mt-6 border border-blue-200">
+                      <p className="font-semibold text-blue-900 mb-4">Rekening Tujuan Transfer (PT IndoGlobalPrint):</p>
+                      <div className="space-y-2 text-sm">
+                        <div className="flex justify-between">
+                          <span className="text-blue-800">Bank:</span>
+                          <span className="font-semibold text-foreground">Bank Central Asia (BCA)</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span className="text-blue-800">Nomor Rekening:</span>
+                          <span className="font-mono font-semibold text-foreground">1234567890</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span className="text-blue-800">Atas Nama:</span>
+                          <span className="font-semibold text-foreground">PT IndoGlobalPrint</span>
+                        </div>
+                        <div className="flex justify-between border-t border-blue-100 pt-2 mt-2">
+                          <span className="text-blue-800 font-semibold">Nominal Transfer:</span>
+                          <span className="font-bold text-blue-900">Rp {(getTotalPrice() * 16000).toLocaleString('id-ID')}</span>
+                        </div>
                       </div>
                     </div>
+
                     <div className="mt-4 p-3 bg-blue-100 rounded text-sm text-blue-900">
                       <p className="font-semibold mb-1">⚠️ Penting:</p>
                       <ul className="list-disc list-inside space-y-1">
