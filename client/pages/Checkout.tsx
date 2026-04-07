@@ -312,7 +312,7 @@ export default function Checkout() {
                         name="city"
                         value={shippingData.city}
                         onChange={handleShippingChange}
-                        placeholder="Jakarta"
+                        placeholder="Bekasi"
                         className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-white text-foreground"
                       />
                     </div>
@@ -325,8 +325,8 @@ export default function Checkout() {
                         name="state"
                         value={shippingData.state}
                         onChange={handleShippingChange}
-                        placeholder="CA"
-                        maxLength={2}
+                        placeholder="Jawa Barat"
+                        maxLength={14}
                         className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-white text-foreground"
                       />
                     </div>
@@ -347,26 +347,7 @@ export default function Checkout() {
                         className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-white text-foreground"
                       />
                     </div>
-                    <div>
-                      <label className="block text-sm font-semibold text-foreground mb-2">
-                        Negara
-                      </label>
-                      <select
-                        name="country"
-                        value={shippingData.country}
-                        onChange={handleShippingChange}
-                        className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-white text-foreground"
-                      >
-                        <option>USA</option>
-                        <option>Kanada</option>
-                        <option>Inggris</option>
-                        <option>Australia</option>
-                        <option>Lainnya</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                    
 
               {/* Payment Method */}
               <div className="bg-muted/30 rounded-2xl p-6 border border-border">
@@ -481,7 +462,7 @@ export default function Checkout() {
                     <div className="space-y-3 text-sm text-green-900">
                       <div className="bg-white p-3 rounded border border-green-100">
                         <p className="font-semibold mb-2">Cara Pembayaran:</p>
-                        <p>Anda bisa membayar langsung kepada kurir dengan uang tunai atau menggunakan e-wallet (GCash, PayMaya) saat paket diterima.</p>
+                        <p>Anda bisa membayar langsung kepada kurir dengan uang tunai atau Transfer</p>
                       </div>
                       <div className="bg-white p-3 rounded border border-green-100">
                         <p className="font-semibold mb-2">Estimasi Biaya Tambahan:</p>
@@ -489,7 +470,7 @@ export default function Checkout() {
                       </div>
                       <div className="bg-white p-3 rounded border border-green-100">
                         <p className="font-semibold mb-2">Estimasi Pengiriman:</p>
-                        <p>5-7 hari kerja dari tanggal pemesanan</p>
+                        <p>2-3 hari kerja dari tanggal pemesanan</p>
                       </div>
                     </div>
                     <div className="mt-4 p-3 bg-green-100 rounded text-sm text-green-900">
@@ -497,7 +478,7 @@ export default function Checkout() {
                       <ul className="list-disc list-inside space-y-1 mt-2">
                         <li>Bayar setelah paket tiba dengan aman</li>
                         <li>Tidak perlu transfer bank terlebih dahulu</li>
-                        <li>Bisa langsung inspeksi produk sebelum bayar</li>
+                        <li>Bisa langsung cek produk sebelum bayar</li>
                       </ul>
                     </div>
                   </div>
@@ -554,7 +535,7 @@ export default function Checkout() {
 
               <div className="space-y-2 text-xs text-muted-foreground">
                 <p>✓ Pengiriman gratis untuk semua pesanan</p>
-                <p>✓ Perkiraan pengiriman: 5-7 hari kerja</p>
+                <p>✓ Perkiraan pengiriman: 2-3 hari kerja</p>
                 <p>✓ Jaminan kepuasan 100%</p>
                 <p>✓ Checkout yang aman</p>
               </div>
