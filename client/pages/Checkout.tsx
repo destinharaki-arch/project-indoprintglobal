@@ -347,7 +347,22 @@ export default function Checkout() {
                         className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-white text-foreground"
                       />
                     </div>
-                    
+                    <div>
+                      <label className="block text-sm font-semibold text-foreground mb-2">
+                        Negara
+                      </label>
+                      <input
+                        type="text"
+                        name="country"
+                        value={shippingData.country}
+                        onChange={handleShippingChange}
+                        placeholder="Indonesia"
+                        className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-white text-foreground"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
 
               {/* Payment Method */}
               <div className="bg-muted/30 rounded-2xl p-6 border border-border">
