@@ -181,7 +181,7 @@ const ALL_STICKERS = [
   {
     id: '27',
     name: 'Lost In The Stars Tee',
-    price: 3,29,
+    price: 3.29,
     category: 'T-Shirt',
     image: 'https://cdn.builder.io/api/v1/image/assets%2F9c50b3bcefd1446d9de9ea9a61046f45%2Fe5dc78085dda4ebeb0af9d4ac5591c81?format=webp&width=800&height=1200',
     reviews: 0,
