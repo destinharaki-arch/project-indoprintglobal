@@ -167,7 +167,7 @@ export default function Login() {
 
         {/* Demo Credentials */}
         <div className="mt-6 bg-secondary/10 border border-secondary/20 rounded-lg p-4 text-sm">
-          <p className="text-muted-foreground mb-2">🎯 Kredensial Demo:</p>
+          <p className="text-muted-foreground mb-2">IndoPrintGlobal:</p>
           <p className="text-foreground font-mono text-xs">
             Email: <span className="text-secondary">demo@example.com</span>
           </p>
