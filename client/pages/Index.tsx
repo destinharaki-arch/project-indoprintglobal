@@ -9,11 +9,11 @@ import { useToast } from '@/components/ui/use-toast';
 const FEATURED_STICKERS = [
   {
     id: '19',
-    name: 'Band Music Sticker Pack 1',
-    price: 1.25,
+    name: 'Band Music Sticker Pack ',
+    price: 1.2,
     category: 'Stiker',
     image: 'https://cdn.builder.io/api/v1/image/assets%2F9c50b3bcefd1446d9de9ea9a61046f45%2F04b47a6243b34c738b3dc2c7ff88c596?format=webp&width=800&height=1200',
-    reviews: 134,
+    reviews: 0,
     size: '3-15 cm',
     shape: 'Band Logo Mix',
     material: 'Vinil Glossy Premium',
@@ -22,11 +22,11 @@ const FEATURED_STICKERS = [
   {
     id: '29',
     name: 'Bobotoh 1919 Football Tee',
-    price: 1.00,
+    price: 3.2,
     category: 'T-Shirt',
     image: 'https://cdn.builder.io/api/v1/image/assets%2F9c50b3bcefd1446d9de9ea9a61046f45%2F926cb19d11cd43de8c89d7e1c5b46f67?format=webp&width=800&height=1200',
-    reviews: 145,
-    size: 'XS - XXL',
+    reviews: 0,
+    size: 'M - XXL',
     shape: 'Crew Neck',
     material: 'Cotton Combed',
     usage: 'Sports Fan Wear, Football Culture, Supporter Gear',
@@ -34,11 +34,11 @@ const FEATURED_STICKERS = [
   {
     id: '31',
     name: 'Life is Good Wave Tee',
-    price: 5.94,
+    price: 3.0,
     category: 'T-Shirt',
     image: 'https://cdn.builder.io/api/v1/image/assets%2F9c50b3bcefd1446d9de9ea9a61046f45%2Fd62d20bdecca4f95b0c97349ec830a78?format=webp&width=800&height=1200',
-    reviews: 134,
-    size: 'XS - XXL',
+    reviews: 0,
+    size: 'M - XXL',
     shape: 'Crew Neck',
     material: 'Cotton Berkualitas',
     usage: 'Casual Wear, Beach Theme, Positive Message',
@@ -46,11 +46,11 @@ const FEATURED_STICKERS = [
   {
     id: '34',
     name: 'Saint City Tee',
-    price: 4.69,
+    price: 3.5,
     category: 'T-Shirt',
     image: 'https://cdn.builder.io/api/v1/image/assets%2F9c50b3bcefd1446d9de9ea9a61046f45%2F964545a1b5d34628b7e95645c51cb3da?format=webp&width=800&height=1200',
-    reviews: 98,
-    size: 'XS - XXL',
+    reviews: 0,
+    size: 'M - XXL',
     shape: 'Crew Neck',
     material: 'Cotton 100%',
     usage: 'Casual Wear, Urban Style, Statement Shirt',
@@ -155,7 +155,7 @@ export default function Index() {
             Sedang Trending
           </h2>
           <p className="text-lg text-muted-foreground">
-            Lihat koleksi stiker paling populer yang dicintai komunitas kami
+            Lihat koleksi stiker paling populer yang dimiliki komunitas kami
           </p>
         </div>
 
@@ -199,7 +199,7 @@ export default function Index() {
                 <h3 className="font-bold text-lg">IndoGlobalPrint</h3>
               </div>
               <p className="text-sm opacity-75">
-                Tujuan utama Anda untuk stiker berkualitas tinggi dan unik dari seniman di seluruh dunia.
+                Tujuan utama Anda untuk stiker berkualitas tinggi dan unik.
               </p>
             </div>
             <div>
@@ -229,7 +229,7 @@ export default function Index() {
           </div>
           
           <div className="border-t border-background/20 pt-8 text-center text-sm opacity-75">
-            <p>&copy; 2024 IndoGlobalPrint. Semua hak dilindungi. Dibuat dengan care untuk pecinta stiker.</p>
+            <p>&copy; 2025 IndoGlobalPrint. Semua hak dilindungi.</p>
           </div>
         </div>
       </footer>
