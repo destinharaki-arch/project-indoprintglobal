@@ -24,7 +24,7 @@ export default function Checkout() {
     city: '',
     state: '',
     zipCode: '',
-    country: 'USA',
+    country: 'Indonesia',
   });
 
   if (!user) {
