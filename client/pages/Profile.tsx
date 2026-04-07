@@ -45,7 +45,7 @@ export default function Profile() {
               <div>
                 <h1 className="text-4xl font-bold text-foreground">{user.name}</h1>
                 <p className="text-muted-foreground mt-2">
-                  Anggota sejak {user.joinDate}
+                  Member sejak {user.joinDate}
                 </p>
               </div>
             </div>
