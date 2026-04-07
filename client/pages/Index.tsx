@@ -22,7 +22,7 @@ const FEATURED_STICKERS = [
   {
     id: '29',
     name: 'Bobotoh 1919 Football Tee',
-    price: 10.000,
+    price: 1.00,
     category: 'T-Shirt',
     image: 'https://cdn.builder.io/api/v1/image/assets%2F9c50b3bcefd1446d9de9ea9a61046f45%2F926cb19d11cd43de8c89d7e1c5b46f67?format=webp&width=800&height=1200',
     reviews: 145,
