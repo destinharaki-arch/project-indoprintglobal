@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 import { useCart } from '@/context/CartContext';
 import { useUser } from '@/context/UserContext';
+import { CustomerServiceChat } from './CustomerServiceChat';
 
 export function Header() {
   const { getCartCount } = useCart();
@@ -48,6 +49,7 @@ export function Header() {
           <Link to="/shop" className="p-2 hover:bg-muted rounded-lg transition-colors hidden sm:flex">
             <Search className="w-5 h-5 text-foreground" />
           </Link>
+          <CustomerServiceChat />
           <Link
             to="/cart"
             className="relative p-2 hover:bg-muted rounded-lg transition-colors flex items-center gap-2"
