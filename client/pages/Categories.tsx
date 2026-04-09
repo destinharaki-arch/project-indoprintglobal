@@ -80,6 +80,18 @@ const ALL_STICKERS = [
     material: 'Vinil Waterproof',
     usage: 'Urban Gear, Skateboard, Laptop',
   },
+  {
+    id: '36',
+    name: 'Gojo Satoru',
+    price: 1.25,
+    category: 'Stiker',
+    image: 'https://cdn.builder.io/api/v1/image/assets%2F9c50b3bcefd1446d9de9ea9a61046f45%2Ff4589f2bed3c4eacbb7bfded6a54104d?format=webp&width=800&height=1200',
+    reviews: 0,
+    size: '8-15 cm',
+    shape: 'Character Design',
+    material: 'Vinil Glossy Premium',
+    usage: 'Anime Collection, Jujutsu Kaisen Fan, Laptop Decoration',
+  },
   // T-SHIRT CATEGORY
   {
     id: '16',
