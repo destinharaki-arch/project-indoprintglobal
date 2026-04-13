@@ -10,7 +10,7 @@ const ALL_STICKERS = [
   // STIKER CATEGORY
   {
     id: '13',
-    name: 'Brand & Logo Bundle',
+    name: 'Koleksi Stiker sablon',
     price: 1.0,
     category: 'Stiker',
     image: 'https://cdn.builder.io/api/v1/image/assets%2F9c50b3bcefd1446d9de9ea9a61046f45%2F43efc79d057045a484691eea6e92cb0a?format=webp&width=800&height=1200',
