@@ -1,3 +1,7 @@
+"scripts": {
+  "predeploy": "npm run build",
+  "deploy": "gh-pages -d build"
+}
 {
   "homepage": "https://destinharaki-arch.github.io/project-indoprintglobal/"
 }
