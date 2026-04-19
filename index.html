@@ -5,27 +5,5 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>IndoPrintGlobal Project</title>
   </head>
-  
-
-      <span class="cart-item-icon">${p.icon}</span>
-      <span class="cart-item-name">${p.name}</span>
-      <span class="cart-item-qty">×${cart[id]}</span>
-      <span class="cart-item-price">${fmt(sub)}</span>
-    </div>`;
-  }).join("");
-  document.getElementById("cart-total").textContent = fmt(total);
-}
-
-function checkout(){
-  const total = Object.values(cart).reduce((a,b)=>a+b,0);
-  if(total === 0){ alert("Keranjang masih kosong!"); return; }
-  sendPrompt("Saya ingin checkout stiker-stiker di keranjang saya. Tolong bantu proses pembayaran dan pengiriman.");
-}
-
-renderProducts("all");
-</script>
-
-  <body>
-    <div id="root"></div>
   </body>
 </html>
